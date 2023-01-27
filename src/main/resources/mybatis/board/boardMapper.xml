@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.joinus.dao.BoardDAO">
+	
+	<select id="getAll" resultType="BoardDTO">
+		SELECT *
+		FROM meeting
+		ORDER BY meeting_number desc
+	</select>
+	
+	<select id="getSearch" parameterType="String" resultType="BoardDTO">
+		SELECT *
+		FROM meeting		
+		WHERE meeting_title LIKE CONCAT('%', #{data}, '%')
+		ORDER BY meeting_number desc
+	</select>
+
+	<select id="getOne" parameterType="int" resultType="BoardDTO">
+		SELECT * 
+		FROM meeting
+		WHERE meeting_number = #{meeting_number}
+	</select>
+	
+	<update id="raiseHits" parameterType="int">
+		UPDATE meeting
+		SET meeting_hits = meeting_hits + 1
+		WHERE meeting_number = #{meeting_number}
+	</update>
+	
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM meeting
+	</select>
+		
+</mapper>
