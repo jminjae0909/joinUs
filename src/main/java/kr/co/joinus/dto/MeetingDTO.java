@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BoardDTO {
+public class MeetingDTO {
 	private int meeting_number;
 	private String users_id;
 	private String meeting_insertdate;

@@ -5,37 +5,37 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.joinus.dao.BoardDAO;
-import kr.co.joinus.dto.BoardDTO;
+import kr.co.joinus.dao.MeetingDAO;
+import kr.co.joinus.dto.MeetingDTO;
 
 @Service
-public class BoardService {
+public class MeetingService {
 	
 	@Autowired
-	private BoardDAO dao;
+	private MeetingDAO dao;
 	// @Autowired
 	// private TestDAO dao2;
 	
-	public List<BoardDTO> getAll() {
+	public List<MeetingDTO> getAll() {
 		
 		return dao.getAll();
 	}
 	
-	public List<BoardDTO> getSearch(String data) {
+	public List<MeetingDTO> getSearch(String data) {
 		
 		return dao.getSearch(data);
 	}
 		
-	public void add(BoardDTO dto) {
+	public void add(MeetingDTO dto) {
 		dao.insertOne(dto);
 	}
 	
-	public BoardDTO selectOne(int meeting_number) {
+	public MeetingDTO selectOne(int meeting_number) {
 		dao.raiseHits(meeting_number);
 		return dao.getOne(meeting_number);
 	}
 	
-	public void updateOne(BoardDTO dto) {
+	public void updateOne(MeetingDTO dto) {
 		dao.updateOne(dto);
 	}
 	

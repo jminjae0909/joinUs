@@ -45,10 +45,12 @@
 </head>
 <body>
 	<h2>list.jsp</h2>
-	<form action="/board/search">
+	
+	<form action="/joinus/search">
 		<input type="text" name="data" id="data" />
 		<input type="submit" value="검색" />
 	</form>
+	
 	<section id="services" class="services sections-bg">
 	<div class="container" data-aos="fade-up">
 		<div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
@@ -62,7 +64,7 @@
 						</div>
 						<h3>${dto.meeting_title }</h3>
 						<p>장소 : ${dto.meeting_place }</p> 
-						<a href="/board/detail?meeting_number=${dto.meeting_number }" class="readmore stretched-link">
+						<a href="/joinus/detail?meeting_number=${dto.meeting_number }" class="readmore stretched-link">
 							detail more <i class="bi bi-arrow-right"> </i>
 						</a>
 					</div>	
