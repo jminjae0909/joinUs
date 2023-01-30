@@ -45,6 +45,8 @@
 </head>
 <body>
 	<h2>list.jsp</h2>
+	<h3><a href="/login">로그인하기</a></h3>
+	<h3><a href="/regist">회원가입하기</a></h3>
 	
 	<form action="/joinus/search">
 		<input type="text" name="data" id="data" />
