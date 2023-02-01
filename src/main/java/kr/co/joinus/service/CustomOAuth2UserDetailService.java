@@ -1,6 +1,6 @@
 package kr.co.joinus.service;
 
-import java.io.PrintWriter;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -16,6 +16,7 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import kr.co.joinus.dto.UsersDTO;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -25,6 +26,12 @@ public class CustomOAuth2UserDetailService extends DefaultOAuth2UserService {
 	// db연결을 위한 객체
 	@Autowired
 	UsersService service;
+	
+	@Autowired
+	HttpServletRequest req;
+	
+	@Autowired
+	HttpServletResponse resp;
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
@@ -79,7 +86,20 @@ public class CustomOAuth2UserDetailService extends DefaultOAuth2UserService {
 			log.info("email: " + email);
 		}
 		
+		//해당 email이 db에 있는지 확인 후 
+		UsersDTO dto = service.getMemberByEmail(email);
 		
+		//없으면 세션에 넣어 email을 registForm으로 전송하기
+		if (dto == null) {
+			req.getSession().setAttribute("email", email);
+
+			try {
+				resp.sendRedirect("/regist");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 		return super.loadUser(userRequest);
 	}

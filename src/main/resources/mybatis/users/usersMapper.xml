@@ -10,7 +10,8 @@
 	</select>
 	
 	<insert id="insertOne" parameterType="kr.co.joinus.dto.UsersDTO">
-		
+		INSERT INTO users
+		VALUES (#{users_id}, #{users_pwd}, #{users_name}, #{users_phone}, #{users_email}, #{users_nick}, sysdate, #{users_addrs}, 0, 0, 0, null)
 	</insert>
 	
 	<select id="isExistId" parameterType="String" resultType="kr.co.joinus.dto.UsersDTO">

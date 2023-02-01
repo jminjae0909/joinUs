@@ -40,7 +40,7 @@ $(function(){
 		$.ajax({
 			type : "GET",
 			async : true, //비동기화방식으로
-			url : "idCheckup.jsp", //찾아갈 url
+			url : "/isExistId", //찾아갈 url
 			dataType : "html", //받을 데이터 타입
 			data : {"id" : txt}, //전송할 데이터
 			success : function(response, status, request) {

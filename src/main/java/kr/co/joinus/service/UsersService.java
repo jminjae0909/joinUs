@@ -27,5 +27,9 @@ public class UsersService {
 	public void insertEmailOnly(UsersDTO dto) {
 		dao.insertEmailOnly(dto);
 	}
+	
+	public void insertOne(UsersDTO dto) {
+		dao.insertOne(dto);
+	}
 
 }
