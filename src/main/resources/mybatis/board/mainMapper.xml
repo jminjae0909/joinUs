@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.joinus.dao.MeetingDAO">
+
+	<select id="getAll" resultType="MeetingDTO">
+		SELECT *
+		FROM meeting
+		WHERE meeting_state = 0
+		ORDER BY meeting_number desc
+	</select>
+
+	<select id="getAllComplete" resultType="MeetingDTO">
+		SELECT *
+		FROM meeting
+		ORDER BY meeting_number desc
+	</select>
+
+	<select id="getAllCheck" parameterType="int" resultType="MeetingDTO">
+		SELECT *
+		FROM meeting
+		WHERE meeting_state = 0 AND meeting_category = #{category}
+		ORDER BY meeting_number desc
+	</select>
+
+	<select id="getAllCompleteCheck" parameterType="int" resultType="MeetingDTO">
+		SELECT *
+		FROM meeting 
+		WHERE meeting_category = #{category}
+		ORDER BY meeting_number desc
+	</select>
+
+	<select id="getSearch" parameterType="String"
+		resultType="MeetingDTO">
+		SELECT *
+		FROM meeting
+		WHERE meeting_title LIKE CONCAT('%', #{data}, '%')
+		ORDER BY meeting_number desc
+	</select>
+
+	<select id="getOne" parameterType="int" resultType="MeetingDTO">
+		SELECT *
+		FROM meeting
+		WHERE meeting_number = #{meeting_number}
+	</select>
+
+	<update id="raiseHits" parameterType="int">
+		UPDATE meeting
+		SET
+		meeting_hits = meeting_hits + 1
+		WHERE meeting_number = #{meeting_number}
+	</update>
+
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM meeting
+	</select>
+
+</mapper>

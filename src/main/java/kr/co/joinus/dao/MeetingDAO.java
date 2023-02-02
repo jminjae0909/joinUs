@@ -11,7 +11,12 @@ import kr.co.joinus.dto.MeetingDTO;
 @Mapper
 public interface MeetingDAO {
 	List<MeetingDTO> getAll();
-	List<MeetingDTO> getSearch(String data);
+	List<MeetingDTO> getAllComplete();
+	
+	List<MeetingDTO> getAllCheck(int category);
+	List<MeetingDTO> getAllCompleteCheck(int category);
+	
+	List<MeetingDTO> getSearch(String data);	
 	void insertOne(MeetingDTO dto);
 	
 	MeetingDTO getOne(int meeting_number); 
