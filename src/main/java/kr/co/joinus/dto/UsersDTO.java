@@ -23,4 +23,6 @@ public class UsersDTO {
 	private int users_bean;
 	private int users_score;
 	private String users_image;
+	private String users_role;
+	private String users_zipcode;
 }
