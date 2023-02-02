@@ -17,10 +17,7 @@
 			<nav id="navbar" class="navbar order-last order-lg-0">
 				<ul>
 
-					<li><a class="nav-link scrollto " href="#hero">Home</a></li>
-					<li><a class="nav-link scrollto" href="#services">Services</a></li>
-					<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-					<li><a class="nav-link scrollto" href="#/meeting/write">새글 쓰기</a></li>
+					<li><a class="nav-link scrollto" href="/meeting/write">새글 쓰기</a></li>
 					<li class="dropdown"><a href="#"><span>로그인</span> <i class="bi bi-chevron-down"></i></a>
 
 						<ul>
