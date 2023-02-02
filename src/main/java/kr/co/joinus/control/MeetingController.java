@@ -83,14 +83,6 @@ public class MeetingController {
 		return "redirect:/joinus/main";
 	}
 	
-	@GetMapping("/write2")
-	public String wirteForm2() {
-
-		
-		return "writeForm2";
-	}
-	
-	
 	@GetMapping("/skill")
 	public String Meetinglist(@RequestParam("skill")String skill, Model model) {
 				
@@ -102,19 +94,6 @@ public class MeetingController {
 		
 		return "main";
 	}
-	
-	@GetMapping("search")
-	public String list(Model model, @RequestParam("data")String data) {
-		
-		System.out.println(data);
-		List<MeetingDTO> list = service.getSearch(data);
-		
-		log.info("list >>>>>>>>>>>>>>> : " + list);
-		model.addAttribute("list", list);
-		
-		return "main";
-	}
-	
 	
 
 	
