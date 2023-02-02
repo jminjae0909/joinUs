@@ -39,12 +39,10 @@ public class MeetingController {
 	@PostMapping("/write")
 	public String WriteOk(@ModelAttribute("dto")MeetingDTO dto,
 						  HttpServletRequest request,
-						  Model model) {	
-		
+						  Model model) {			
 		//미팅 등록
 		service.add(dto);
-		
-		
+				
 		return "redirect:/joinus/main";		
 	}	
 	
@@ -92,21 +90,6 @@ public class MeetingController {
 		return "writeForm2";
 	}
 	
-	/*
-	 * @GetMapping("/type") public String typelist(@RequestParam("type")String type,
-	 * Model model, HttpSession session) {
-	 * 
-	 * List<MeetingDTO> list = meetingservice.selectAll(); List<SkillTypeDTO> list2
-	 * = skilltypeservice.getSearch(type);
-	 * 
-	 * model.addAttribute("list", list); model.addAttribute("list2", list2);
-	 * 
-	 * 
-	 * 
-	 * System.out.println(list2);
-	 * 
-	 * return "list"; }
-	 */
 	
 	@GetMapping("/skill")
 	public String Meetinglist(@RequestParam("skill")String skill, Model model) {
