@@ -16,16 +16,10 @@
 
 			<nav id="navbar" class="navbar order-last order-lg-0">
 				<ul>
-					<li><a class="nav-link scrollto " href="#hero">Home</a></li>
-					<li><a class="nav-link scrollto" href="#services">Services</a></li>
-					<li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-						<ul>
-							<li><a href="/login">로그인</a></li>
-							<li><a href="/regist">회원가입</a></li>
-							<li><a href="#">Drop Down 3</a></li>
-							<li><a href="#">Drop Down 4</a></li>
-						</ul>
-					</li>
+					<li><a class="nav-link scrollto" href="#services">새글 쓰기</a></li>
+					<li class="dropdown"><a href="/login"><span>로그인</span> <i class="bi bi-chevron-down"></i></a>
+							<li><a href="#">마이페이지</a></li>
+							<li><a href="#">로그아웃</a></li>
 				</ul>
 			</nav>
 		</div>
