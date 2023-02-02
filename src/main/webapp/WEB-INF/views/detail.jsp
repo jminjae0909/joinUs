@@ -66,13 +66,23 @@
 				<th>모임종류</th>
 				<td>${dto.meeting_category }</td>
 			</tr>
-		</table>	
-		
+		</table>
+			
 		<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 			<jsp:include page="../views/map.jsp">
 				<jsp:param value="${dto.meeting_place }" name="place"/>
 			</jsp:include>
 		</div>
+		
+		<table class="table table-striped-columns">
+			<tr>
+				<td colspan="4">
+					<a href="main" class="btn btn-outline-primary">목록</a>
+					<a href="/meeting/modify?meeting_number=${dto.meeting_number }" class="btn btn-outline-primary">수정</a>
+					<a href="/meeting/delete?meeting_number=${dto.meeting_number }" class="btn btn-outline-primary">삭제</a>
+				</td>
+			</tr>
+		</table>	
 		
 		
 		

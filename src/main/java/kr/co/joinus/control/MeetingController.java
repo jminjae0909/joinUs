@@ -67,7 +67,7 @@ public class MeetingController {
 
 		System.out.println(dto);
 
-		return "modifyForm";
+		return "/meeting/modifyForm";
 	}
 	
 	@PostMapping("/modify")
