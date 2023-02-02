@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.joinus.dto.MeetingDTO;
 import kr.co.joinus.service.MeetingService;
@@ -21,7 +23,7 @@ public class MainController {
 	@Autowired
 	MeetingService service;
 	
-	@GetMapping("main")
+	@GetMapping(value = {"", "main"})
 	public String list(Model model) {
 		
 		List<MeetingDTO> list = service.getAll();
@@ -32,11 +34,40 @@ public class MainController {
 		return "main";
 	}
 	
-	@GetMapping("search")
-	public String list(Model model, @RequestParam("data")String data) {
+	@GetMapping("distinction")
+	public String list_All(
+			Model model, 
+			@RequestParam("state")int state,
+			@RequestParam("category")String category) {
+
+		List<MeetingDTO> list = null;
 		
-		System.out.println(data);
-		List<MeetingDTO> list = service.getSearch(data);
+		if(state==0) {
+			if(category.equals("전체")) {
+				list = service.getAll();
+			}else {
+				list = service.getAllCheck(Integer.parseInt(category)-1);
+			}
+			
+		}else {
+			if(category.equals("전체")) {
+				list = service.getAllComplete();
+			}else {
+				list = service.getAllCompleteCheck(Integer.parseInt(category)-1);
+			}
+		}
+		
+		
+		log.info("list >>>>>>>>>>>>>>> : " + list);
+		model.addAttribute("list", list);
+		
+		return "change_list";
+	}
+
+	@GetMapping("search")
+	public String list(Model model, @RequestParam("word")String word) {
+		
+		List<MeetingDTO> list = service.getSearch(word);
 		
 		log.info("list >>>>>>>>>>>>>>> : " + list);
 		model.addAttribute("list", list);
