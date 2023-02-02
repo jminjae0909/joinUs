@@ -58,5 +58,10 @@ public class MeetingService {
 	public int getTotal() {
 		return dao.getTotal();
 	}
+	
+	public List<MeetingDTO> getSkill(String skill) {
+		
+		return dao.getSkill(skill);
+	}
 
 }

@@ -25,4 +25,6 @@ public interface MeetingDAO {
 	void deleteOne(int meeting_number);
 	void raiseHits(int meeting_number);
 	int getTotal();
+	
+	List<MeetingDTO> getSkill(String skill);
 }

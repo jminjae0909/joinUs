@@ -57,5 +57,35 @@
 		SELECT COUNT(*)
 		FROM meeting
 	</select>
+	
+	<select id="getSkill" parameterType="String" resultType="MeetingDTO">
+		SELECT *
+		FROM meeting		
+		WHERE meeting_skill LIKE CONCAT('%', #{skill}, '%')
+		ORDER BY meeting_number desc
+	</select>
+	
+	<insert id="insertOne" parameterType="MeetingDTO">
+		<selectKey keyProperty="meeting_number" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO meeting		
+		VALUES (#{meeting_number}, #{users_id}, NOW(), #{meeting_title}, #{meeting_contents}, 
+				#{meeting_state}, 0, #{meeting_membernum}, #{meeting_contact}, #{meeting_onoff}, 
+				#{meeting_startdate}, #{meeting_period}, #{meeting_place}, #{meeting_category}, #{meeting_skill} )
+	</insert>
+	
+	<update id="updateOne" parameterType="MeetingDTO">
+		UPDATE meeting
+		SET meeting_title=#{meeting_title}, meeting_contents=#{meeting_contents}, meeting_state=#{meeting_state}, meeting_membernum=#{meeting_membernum},
+			meeting_contact=#{meeting_contact}, meeting_onoff=#{meeting_onoff}, meeting_startdate=#{meeting_startdate}, meeting_period=#{meeting_period},
+			meeting_place=#{meeting_place}, meeting_category=#{meeting_category}, meeting_skill=#{meeting_skill}
+		WHERE meeting_number=#{meeting_number}	
+	</update>
+	
+	<delete id="deleteOne" parameterType="int">
+		DELETE FROM meeting
+		WHERE meeting_number = #{meeting_number} 
+	</delete>
 
 </mapper>

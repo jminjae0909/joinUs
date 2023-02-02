@@ -24,5 +24,6 @@ public class MeetingDTO {
 	private String meeting_period;
 	private String meeting_place;
 	private int meeting_category;
+	private String meeting_skill;
 	
 }
