@@ -81,6 +81,7 @@
   			<input type="text" id="addrsDetail" name="addrsDetail" class="form-control" aria-label="Text input with dropdown button" placeholder="상세주소 입력">
 		</div>
 		<div id="button">
+			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
 			<button type="submit" class="btn btn-primary">회원가입하기</button>
 			<a href="/main"><button type="button" class="btn btn-secondary">취소하기</button></a>
 		</div>

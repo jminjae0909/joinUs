@@ -41,16 +41,14 @@ $(function(){
 			type : "GET",
 			async : true, //비동기화방식으로
 			url : "/isExistId", //찾아갈 url
-			dataType : "html", //받을 데이터 타입
-			data : {"id" : txt}, //전송할 데이터
-			success : function(response, status, request) {
-				console.log(response);
-				var msg = response.trim();
-				if(msg == "false") {
-					$("#idCheck").html("사용 가능합니다.");
-				} else if(msg == "true"){
-					$("#idCheck").html("id가 존재합니다.");
+			data : {"users_id" : $("#id").val()}, //전송할 데이터
+			success : function(data) {
+				console.log(data);
+				if(data == 1) {
+					$("#idCheck").html("아이디가 존재합니다.");
 					return false;
+				} else {
+					$("#idCheck").html("사용 가능한 아이디입니다.");
 				}
 			}
 		});

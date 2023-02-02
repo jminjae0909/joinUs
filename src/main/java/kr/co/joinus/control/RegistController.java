@@ -38,18 +38,13 @@ public class RegistController {
 		return "regist/registForm";
 	}
 	
+	@ResponseBody
 	@GetMapping("/isExistId")
-	public String isExistId(@RequestParam("id") String id, HttpServletRequest req, HttpServletResponse resp) {
+	public int isExistId(@RequestParam("users_id") String users_id) {
 		
-		UsersDTO dto = service.isExistId(id);
-		boolean isExist = false;
-		if(dto == null) {
-			isExist = false;
-		}else {
-			isExist = true;
-		}
-		req.setAttribute("isExist", isExist);
-		return "registForm";
+		int result = service.isExistId(users_id);
+		
+		return result;
 	}
 	
 	@PostMapping("/regist")
@@ -63,6 +58,7 @@ public class RegistController {
 		dto.setUsers_addrs(users_addrs);
 		dto.setUsers_email(users_email);
 		service.insertOne(dto);
-		return "registOk";
+		log.info("dto: {}", dto);
+		return "regist/registOk";
 	}
 }

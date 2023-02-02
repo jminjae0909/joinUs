@@ -11,11 +11,11 @@
 	
 	<insert id="insertOne" parameterType="kr.co.joinus.dto.UsersDTO">
 		INSERT INTO users
-		VALUES (#{users_id}, #{users_pwd}, #{users_name}, #{users_phone}, #{users_email}, #{users_nick}, sysdate, #{users_addrs}, 0, 0, 0, null)
+		VALUES (#{users_id}, #{users_pwd}, #{users_name}, #{users_phone}, #{users_email}, #{users_nick}, now(), #{users_addrs}, 0, 0, 0, null, "ROLE_USER", #{users_zipcode})
 	</insert>
 	
-	<select id="isExistId" parameterType="String" resultType="kr.co.joinus.dto.UsersDTO">
-		SELECT * FROM users
+	<select id="isExistId" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM users
 		WHERE users_id = #{users_id}
 	</select>
 	

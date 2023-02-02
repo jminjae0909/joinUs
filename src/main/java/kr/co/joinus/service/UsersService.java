@@ -20,7 +20,7 @@ public class UsersService {
 		dao.insertOne(dto);
 	}
 	
-	public UsersDTO isExistId(String id) {
+	public int isExistId(String id) {
 		return dao.isExistId(id);
 	}
 	

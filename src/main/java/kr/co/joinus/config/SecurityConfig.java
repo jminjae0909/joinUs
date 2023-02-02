@@ -61,9 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/logintest/member").authenticated() // authenticated: 인증이 된 사람만 들어오라하는 의미
 				.antMatchers("/logintest/admin").hasRole("ADMIN")
 
-				.antMatchers("/board/**")
-				.authenticated()
-				.anyRequest()
+				.antMatchers("/regist")
 				.permitAll()
 				.and()
 				
