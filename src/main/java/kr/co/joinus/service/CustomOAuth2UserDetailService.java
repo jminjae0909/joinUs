@@ -93,10 +93,10 @@ public class CustomOAuth2UserDetailService extends DefaultOAuth2UserService {
 		// 없으면 세션에 넣어 email을 registForm으로 전송하기
 		if (dto == null) {
 			req.getSession().setAttribute("email", email);
-			
+
 			try {
 				PrintWriter out = resp.getWriter();
-				
+
 				resp.sendRedirect("/regist");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
