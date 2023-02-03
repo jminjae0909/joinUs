@@ -149,7 +149,7 @@ h6 {
 	<div class="tab">
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1">회원정보수정</li>
-			<li class="tab-link" data-tab="tab-2">작성글조회</li>
+			<li class="tab-link" data-tab="tab-2">나의모임글조회</li>
 			<li class="tab-link" data-tab="tab-3">관심목록조회</li>
 			<li class="tab-link" data-tab="tab-4">나의후기조회</li>
 		</ul>
@@ -167,11 +167,17 @@ h6 {
 			</form>
 		</div>
 
-		<div id="tab-2" class="tab-content"></div>
-
-		<div id="tab-3" class="tab-content"></div>
-		<div id="tab-4" class="tab-content"></div>
-		<div id="tab-5" class="tab-content"></div>
+		<div id="tab-2" class="tab-content">
+			<jsp:include page="../views/mypage/meeting_list.jsp" />
+		</div>
+		
+		<div id="tab-3" class="tab-content">
+			<jsp:include page="../views/mypage/interests_list.jsp" />
+		</div>
+		
+		<div id="tab-4" class="tab-content">
+			<jsp:include page="../views/mypage/review_list.jsp" />
+		</div>
 	</div>
 </body>
 </html>
