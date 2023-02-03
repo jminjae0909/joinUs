@@ -38,6 +38,11 @@ public class LoginController {
 			session.setAttribute("dto", dto);
 			return "main";
 		}
-		
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "main";
 	}
 }
