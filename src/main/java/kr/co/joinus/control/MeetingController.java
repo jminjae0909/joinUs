@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import kr.co.joinus.dto.CommentsDTO;
 import kr.co.joinus.dto.MeetingDTO;
+import kr.co.joinus.service.CommentsService;
 import kr.co.joinus.service.MeetingService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,6 +29,9 @@ public class MeetingController {
 	@Autowired
 	MeetingService service;
 
+	@Autowired
+	CommentsService commentsservice;
+	
 	
 	@GetMapping("/write")
 	public String wirteForm() {
@@ -49,9 +53,13 @@ public class MeetingController {
 	@GetMapping("/detail")
 	public String detail(@RequestParam("meeting_number")int meeting_number, Model model) {
 		MeetingDTO dto = service.selectOne(meeting_number);
+		List<CommentsDTO> list = commentsservice.selectList(meeting_number);
 
-
+		System.out.println(dto.getMeeting_number());
 		model.addAttribute("dto", dto);
+		model.addAttribute("list", list);
+		
+		System.out.println(list);
 
 
 		return "detail";

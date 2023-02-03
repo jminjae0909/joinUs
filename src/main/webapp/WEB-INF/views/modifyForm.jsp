@@ -216,7 +216,7 @@
 					<th>시작예정</th>
 					<td><input type="text" id="date-picker"
 					class="form-control bg-white border-1 small" aria-label="Search"
-					aria-describedby="basic-addon2" value="">
+					aria-describedby="basic-addon2" name="meeting_startdate" value="${dto.meeting_startdate }">
 
 				</td>
 				</tr>

@@ -223,7 +223,7 @@ label {
 						<div
 							class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 aos-init aos-animate"
 							data-aos="zoom-in" data-aos-delay="100">
-							<a href="/joinus/detail?meeting_number=${dto.meeting_number }">
+							<a href="/meeting/detail?meeting_number=${dto.meeting_number }">
 								<div class="icon-box">
 
 									<div class="studyItem_schedule">
