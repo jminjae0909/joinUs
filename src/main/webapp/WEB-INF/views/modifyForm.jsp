@@ -128,7 +128,7 @@
 
 <body>
 
-	<jsp:include page="head.jsp" />
+	<%-- <jsp:include page="head.jsp" /> --%>
 	<h2>codee writeForm.jsp</h2>
 
 	<div class="container">
@@ -289,8 +289,8 @@
 				</tr>
 				
 				<tr>
-
-				
+					<td><td><input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" /></td></td>
+				</tr>
 
 				<tr>
 					<td colspan="4"><input type="submit" value="수정완료"

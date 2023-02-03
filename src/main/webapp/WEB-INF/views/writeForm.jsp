@@ -118,8 +118,10 @@
 </style>
 
 <body>
-	<jsp:include page="head.jsp" />
+	<%-- <jsp:include page="head.jsp" /> --%>
 	<h2>codee writeForm.jsp</h2>
+	<h2>codee writeForm.jsp</h2>
+
 
 	<div class="container">
 		<form action="write" method="post">
@@ -262,6 +264,9 @@
 				</tr>
 
 				<tr>
+					<td><td><input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" /></td></td>
+				</tr>
+				
 				<tr>
 					<td colspan="4"><input type="submit" value="작성완료"
 						class="btn btn-outline-primary" /></td>
