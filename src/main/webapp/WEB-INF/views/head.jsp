@@ -11,7 +11,7 @@
 		<div class="container d-flex align-items-center justify-content-lg-between">
 
 			<h1 class="logo me-auto me-lg-0">
-				<a href="index.html">CODEE<span>.</span></a>
+				<a href="main">CODEE<span>.</span></a>
 			</h1>
 
 			<nav id="navbar" class="navbar order-last order-lg-0">

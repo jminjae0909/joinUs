@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="./script.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <!-- CSS only -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -55,49 +57,57 @@
 <script
 	src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 
 </head>
 <script>
+
 	$(function() {
-		$(document).ready(function() {
-				var multipleCancelButton = new Choices(
-						'#choices-multiple-remove-button', {
-							removeItemButton : true,
-							maxItemCount : 5,
-							searchResultLimit : 5,
-							renderChoiceLimit : 20
-						});
+		$(document).ready(
+				function() {
 
-					});
+					var multipleCancelButton = new Choices(
+							'#choices-multiple-remove-button', {
+								removeItemButton : true,
+								maxItemCount : 5,
+								searchResultLimit : 5,
+								renderChoiceLimit : 20
+							});
 
+				});
+		
 		$('#date-picker').datepicker({
 			format : 'yyyy-mm-dd',
-			language : "ko",
-			keyboardNavigation : false,
-			forceParse : false,
-			autoclose : true,
-			todayHighlight : true
+			language: "ko",
+	        keyboardNavigation: false,
+	        forceParse: false,
+	        autoclose: true,
+	        todayHighlight: true
 		});
-
+				
 	});
 	
-	/* 주소 API */
-	window.onload=function(){
-		var btn = document.getElementById("addr");
-		btn.onclick=openKakaoPostcode;
-	}
-	function openKakaoPostcode(){
-
-		new daum.Postcode({
-			oncomplete: function(data){
-
-			document.getElementById("addr").value=data.roadAddress;
-			}
-		}).open();
+	$(function() {
+				
+		/* modi select value값 가져오기 */
+		/* 미팅상태 */
+		var meeting_state_val =  $('#meeting_state_val').val();					
+		$("#meeting_state_val2 option[value='"+meeting_state_val+"']").prop("selected",true);
+		/* 미팅인원 */
+		var meeting_membernum_val = $('#meeting_membernum_val').val();		
+		$("#meeting_membernum_val2 option[value='"+meeting_membernum_val+"']").prop("selected",true);		
+		/* 미팅온&오프 */
+		var meeting_onoff_val = $('#meeting_onoff_val').val();		
+		$("#meeting_onoff_val2 option[value='"+meeting_onoff_val+"']").prop("selected",true);
+		/* 작업기간 */
+		var meeting_period_val = $('#meeting_period_val').val();
+		$("#meeting_period_val2 option[value='"+meeting_period_val+"']").prop("selected",true);		
+		/* 모임종류 */
+		var meeting_category_val = $('#meeting_category_val').val();		
+		$("#meeting_category_val2 option[value='"+meeting_category_val+"']").prop("selected",true);
 		
-	}
-	
+	});
+		
 </script>
 
 <style>
@@ -114,30 +124,34 @@
     border: 1px solid rgb(68, 68, 68);
     color: #fff;
     word-break: break-all;
-</style>
+    </style>
 
 <body>
 
+	<jsp:include page="head.jsp" />
 	<h2>codee writeForm.jsp</h2>
 
 	<div class="container">
-		<form action="write" method="post">
+		<form action="modify" method="post">
 			<table class="table table-striped">
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" name="users_id" id="" /></td>
+					<td><input type="text" name="users_id" id="" value="${dto.users_id }"/></td>
 				</tr>
 
+			
 				<tr>
 					<th>제목</th>
-					<td><input class="form-control" type="text"
-						name="meeting_title" id="" /></td>
+					<td><input class="form-control" type="text" name="meeting_title" id="" value="${dto.meeting_title }" /></td>
+					<td><input type="hidden" name="meeting_number" value="${dto.meeting_number }" /></td>
+
+					<td><input type="hidden" name="skill_number" value="${dto2.skill_number }" /></td>
 				</tr>
 
 				<tr>
 					<th>내용</th>
-					<td><textarea class="form-control" name="meeting_contents"
-							id="" cols="80" rows="20"></textarea></td>
+					<td><textarea class="form-control" name="meeting_contents" id="" cols="80"
+							rows="20">${dto.meeting_contents }</textarea></td>
 				</tr>
 
 				<tr>
@@ -145,11 +159,14 @@
 					<td>
 						<div>
 							<select class="form-select" aria-label="Default select example"
-								name="meeting_state">
+								name="meeting_state" id="meeting_state_val2">
 								<option selected>선택하세요</option>
 								<option value="0">모집중</option>
 								<option value="1">모집완료</option>
 							</select>
+						</div>
+						<div >
+							<input type="hidden" name="" id="meeting_state_val" value="${dto.meeting_state }" />
 						</div>
 					</td>
 				</tr>
@@ -159,7 +176,7 @@
 					<td>
 						<div>
 							<select class="form-select" aria-label="Default select example"
-								name="meeting_membernum">
+								name="meeting_membernum" id="meeting_membernum_val2">
 								<option selected>선택하세요</option>
 								<option value="1">1명</option>
 								<option value="2">2명</option>
@@ -169,23 +186,28 @@
 								<option value="6">6명</option>
 							</select>
 						</div>
+						<div >
+							<input type="hidden" name="" id="meeting_membernum_val" value="${dto.meeting_membernum }" />
+						</div>
 					</td>
 				</tr>
 				<tr>
 					<th>연락방법</th>
-					<td><input type="text" class="form-control"
-						name="meeting_contact" id="" /></td>
+					<td><input type="text" class="form-control" name="meeting_contact" id="" value="${dto.meeting_contact }"/></td>
 				</tr>
 				<tr>
 					<th>진행방식</th>
 					<td>
 						<div>
 							<select class="form-select" aria-label="Default select example"
-								name="meeting_onoff">
+								name="meeting_onoff" id="meeting_onoff_val2">
 								<option selected>선택하세요</option>
 								<option value="온라인">온라인</option>
 								<option value="오프라인">오프라인</option>
 							</select>
+						</div>
+						<div>
+							<input type="hidden" name="" id="meeting_onoff_val" value="${dto.meeting_onoff }" />					
 						</div>
 					</td>
 				</tr>
@@ -193,10 +215,10 @@
 				<tr>
 					<th>시작예정</th>
 					<td><input type="text" id="date-picker"
-						class="form-control bg-white border-1 small" aria-label="Search"
-						aria-describedby="basic-addon2" name="meeting_startdate">
+					class="form-control bg-white border-1 small" aria-label="Search"
+					aria-describedby="basic-addon2" value="">
 
-					</td>
+				</td>
 				</tr>
 
 				<tr>
@@ -204,45 +226,49 @@
 					<td>
 						<div>
 							<select class="form-select" aria-label="Default select example"
-								name="meeting_period">
+								name="meeting_period" id="meeting_period_val2">
 								<option selected>선택하세요</option>
 								<option value="1~2개월">1~2개월</option>
 								<option value="2~3개월">2~3개월</option>
 								<option value="3~4개월">3~4개월</option>
 								<option value="5개월~장기">5개월~장기</option>
-							</select>
-
+							</select> 
+						</div>
+						<div>
+							<input type="hidden" name="" id="meeting_period_val" value="${dto.meeting_period }" />					
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<th>모임장소</th>
-					<td>
-						<input type="text"  class="form-control" name="meeting_place" id="addr" size="30" />						
-					</td>
-									
+					<td><input type="text" class="form-control" name="meeting_place" id="" value="${dto.meeting_place }"/></td>
 				</tr>
 				<tr>
 					<th>모임종류</th>
 					<td>
 						<div>
 							<select class="form-select" aria-label="Default select example"
-								name="meeting_category">
+								name="meeting_category" id="meeting_category_val2">
 								<option selected>선택하세요</option>
-								<option value="1">프로젝트</option>
-								<option value="2">스터디</option>
-							</select>
+								<option value="1">스터디</option>
+								<option value="2">프로젝트</option>
+							</select> 
+						</div>
+						<div>
+							<input type="hidden" name="" id="meeting_category_val" value="${dto.meeting_category }" />					
 						</div>
 					</td>
 				</tr>
-
+				
+				
+				
 				<tr>
 					<th>기술</th>
-					<td>
+					<td>					
 						<div class="row d-flex justify-content-center mt-100">
 						<div class="col-md-6">
 							<select id="choices-multiple-remove-button"
-								placeholder="Select upto 5 tags" class="mul-select" name="meeting_skill" multiple>
+								placeholder="Select upto 5 tags" name="meeting_skill" multiple>
 								<option value="java">java</option>
 								<option value="Spring">Spring</option>
 								<option value="Nodejs">Nodejs</option>
@@ -254,15 +280,20 @@
 								<option value="Python">Python</option>
 								<option value="php">php</option>
 							</select>
+						</div>						
 						</div>
-						</div>
-							
+						<div>
+							<input type="hidden" name="" id="meeting_skill_val" value="${dto.meeting_skill}" />					
+						</div>										
 					</td>
 				</tr>
+				
+				<tr>
+
+				
 
 				<tr>
-				<tr>
-					<td colspan="4"><input type="submit" value="작성완료"
+					<td colspan="4"><input type="submit" value="수정완료"
 						class="btn btn-outline-primary" /></td>
 				</tr>
 

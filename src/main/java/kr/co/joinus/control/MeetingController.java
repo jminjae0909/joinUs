@@ -33,7 +33,7 @@ public class MeetingController {
 	public String wirteForm() {
 
 		
-		return "/meeting/writeForm";
+		return "/writeForm";
 	}
 	
 	@PostMapping("/write")
@@ -65,7 +65,7 @@ public class MeetingController {
 
 		System.out.println(dto);
 
-		return "/meeting/modifyForm";
+		return "/modifyForm";
 	}
 	
 	@PostMapping("/modify")
