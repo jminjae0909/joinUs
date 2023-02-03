@@ -13,22 +13,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+	crossorigin="anonymous"></script>
 <style>
 a {
 	text-decoration: none;
 	color: black;
 }
 
-#btn1{
-margin-left:88%;
+#btn1 {
+	margin-left: 88%;
 }
 
-textarea{
-width:100%;
+textarea {
+	width: 100%;
 }
-
 </style>
 <!-- --------header  -------- -->
 <link rel="stylesheet" href="../css/main.css" />
@@ -60,39 +66,43 @@ width:100%;
 <body>
 
 	<form action="../refund/adminRefundOk.jsp">
-	<div class="margind">
-	
-	<table class="table table-hover">
-	<thead class="table-success">
-	<tr align="center">
-	<td></td><td>예약일</td><td>시설명</td><td>이용회차</td><td>결제금액</td><td>환불예정금액</td>
-	</tr>
-	</thead>
+		<div class="margind">
 
-	<tr>
-		<td><input type='checkbox' name="resno" id="resno" value="" class="checkSelect"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td colspan="6"></td>
-	</tr>
+			<table class="table table-hover">
+				<thead class="table-success">
+					<tr align="center">
+						<td></td>
+						<td>글번호</td>
+						<td>제목</td>
+						<td>후기평가</td>
+						<td>작성일</td>
+					</tr>
+				</thead>
 
-	</table>
+				<tr>
+					<td><input type='checkbox' name="resno" id="resno" value=""
+						class="checkSelect"></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="4"></td>
+				</tr>
 
-	
-	<input type="submit" value="환불승인" onclick="checkForm(this);" id="btn1" class="btn btn-outline-success"/>
-			
-			</div>
-			</form>
-	
-		<script>
+			</table>
+
+
+			<input type="submit" value="삭제" onclick="checkForm(this);"
+				id="btn1" class="btn btn-outline-success" />
+
+		</div>
+	</form>
+
+	<script>
 		
-		
-		</script>
+	</script>
 </body>
 </html>
