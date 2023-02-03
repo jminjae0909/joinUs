@@ -1,5 +1,8 @@
 package kr.co.joinus.control;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,12 +30,12 @@ public class RegistController {
 	UsersService service;
 
 	@GetMapping("/regist")
-	public String regist(HttpServletRequest req, Model model) {
+	public String regist(HttpServletRequest req, Model model, HttpServletResponse resp) throws IOException {
 		String email = (String)req.getSession().getAttribute("email");
 		int idx = email.indexOf("@");
 		String emailId = email.substring(0, idx);
 		String emailDomain = email.substring(idx+1);
-		System.out.println("이메일 세션 확인: "+email);
+		System.out.println("이메일 확인: "+email);
 		model.addAttribute("emailId", emailId);
 		model.addAttribute("emailDomain", emailDomain);
 		return "regist/registForm";

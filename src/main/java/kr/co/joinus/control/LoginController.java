@@ -1,5 +1,9 @@
 package kr.co.joinus.control;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +27,11 @@ public class LoginController {
 	}
 	
 	@PostMapping("/login")
-	public String registForm(@RequestParam("users_id") String id, HttpSession session) {
+	public String registForm(@RequestParam("users_id") String id, HttpSession session, HttpServletResponse resp) throws IOException {
 		UsersDTO dto = service.getMemberByEmail(id);
 		if(dto == null) {
+			PrintWriter out = resp.getWriter();
+			out.println("<script> alert('등록된 회원이 아닙니다. 회원가입 페이지로 이동합니다') </script>");
 			return "regist/registForm";
 		}else {
 			session.setAttribute("dto", dto);

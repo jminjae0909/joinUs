@@ -4,14 +4,14 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.joinus.dao.UsersDAO">
-	<select id="getMemberFindByEmail" parameterType="String" resultType="kr.co.joinus.dto.UsersDTO">
+	<select id="getMemberFindByEmail" parameterType="String" resultType="UsersDTO">
 		SELECT * FROM users
 		WHERE users_email = #{users_email}
 	</select>
 	
-	<insert id="insertOne" parameterType="kr.co.joinus.dto.UsersDTO">
+	<insert id="insertOne" parameterType="UsersDTO">
 		INSERT INTO users
-		VALUES (#{users_id}, #{users_pwd}, #{users_name}, #{users_phone}, #{users_email}, #{users_nick}, now(), #{users_addrs}, 0, 0, 0, null, "ROLE_USER", #{users_zipcode})
+		VALUES (#{users_id}, #{users_pwd}, #{users_name}, #{users_phone}, #{users_email}, #{users_nick}, now(), #{users_addrs}, 0, 0, 0, null, 'USER', #{users_zipcode})
 	</insert>
 	
 	<select id="isExistId" parameterType="String" resultType="int">
@@ -19,7 +19,7 @@
 		WHERE users_id = #{users_id}
 	</select>
 	
-	<insert id="insertEmailOnly" parameterType="kr.co.joinus.dto.UsersDTO">
+	<insert id="insertEmailOnly" parameterType="UsersDTO">
 		INSERT INTO users (users_email)
 		VALUES (#{users_email})
 	</insert>

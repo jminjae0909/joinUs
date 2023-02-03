@@ -1,6 +1,7 @@
 package kr.co.joinus.service;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -26,10 +27,10 @@ public class CustomOAuth2UserDetailService extends DefaultOAuth2UserService {
 	// db연결을 위한 객체
 	@Autowired
 	UsersService service;
-	
+
 	@Autowired
 	HttpServletRequest req;
-	
+
 	@Autowired
 	HttpServletResponse resp;
 
@@ -85,16 +86,26 @@ public class CustomOAuth2UserDetailService extends DefaultOAuth2UserService {
 
 			log.info("email: " + email);
 		}
-		
-		//해당 email이 db에 있는지 확인 후 
+
+		// 해당 email이 db에 있는지 확인 후
 		UsersDTO dto = service.getMemberByEmail(email);
-		
-		//없으면 세션에 넣어 email을 registForm으로 전송하기
+
+		// 없으면 세션에 넣어 email을 registForm으로 전송하기
 		if (dto == null) {
 			req.getSession().setAttribute("email", email);
-
+			
 			try {
+				PrintWriter out = resp.getWriter();
+				
 				resp.sendRedirect("/regist");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			req.getSession().setAttribute("dto", dto);
+			try {
+				resp.sendRedirect("/joinus/main");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

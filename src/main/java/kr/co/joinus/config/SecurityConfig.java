@@ -24,9 +24,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	CustomOAuth2UserDetailService userDetailService;
-	
-	@Autowired
-	CustomerLoginSuccessHandler loginSuccessHandler;
 
 	// bean등록해줌
 	@Bean
@@ -66,7 +63,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 				
 				.oauth2Login().loginPage("/login")  // sns로그인 가능하게 하되 커스텀 로그인 페이지로 가도록 하기
-				//.successHandler(loginSuccessHandler) //로그인 성공하면 successHandler 메서드를 실행
 				.userInfoEndpoint() // 소셜 로그인 인증 후 얻어지는 사용자 정보를
 				.userService(userDetailService); // 이렇게 설정하고 싶다(userDetailService클래스에서 설정한 값을 실행함) 
 				
