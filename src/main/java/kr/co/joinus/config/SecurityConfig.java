@@ -60,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				
 				.antMatchers("/joinus/**").permitAll()
 				.antMatchers("/meeting/**").permitAll()
+				
 				.antMatchers("/regist")
 				.permitAll()
 				.and()
