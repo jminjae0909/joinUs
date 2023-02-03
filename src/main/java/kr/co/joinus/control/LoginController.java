@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.joinus.dto.UsersDTO;
 import kr.co.joinus.service.UsersService;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j
 public class LoginController {
 	
 	@Autowired
@@ -29,9 +31,8 @@ public class LoginController {
 	@PostMapping("/login")
 	public String registForm(@RequestParam("users_id") String id, HttpSession session, HttpServletResponse resp) throws IOException {
 		UsersDTO dto = service.getMemberByEmail(id);
-		if(dto == null) {
-			PrintWriter out = resp.getWriter();
-			out.println("<script> alert('등록된 회원이 아닙니다. 회원가입 페이지로 이동합니다') </script>");
+		int result = service.isExistId(id);
+		if(dto == null && result == 0) {
 			return "regist/registForm";
 		}else {
 			session.setAttribute("dto", dto);

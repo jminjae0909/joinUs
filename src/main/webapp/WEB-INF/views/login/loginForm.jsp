@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>loginForm.jsp</h1>
-	<form action="<c:url value="/login" />" method="post">
+	<form action="/login" method="post">
 	<table>
 		<tr>
 			<th>ID</th>
