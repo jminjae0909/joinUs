@@ -181,7 +181,8 @@ label {
 </head>
 <body>
 	<jsp:include page="head.jsp" />
-
+	<h5><sec:authentication property="principal"/></h5>
+	
 	<main id="main">
 		<jsp:include page="AD.jsp" />
 

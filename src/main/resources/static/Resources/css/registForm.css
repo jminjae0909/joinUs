@@ -1,0 +1,28 @@
+div.container{
+	width: 500px;
+}
+a{
+	text-decoration: none;
+}
+div#logo{
+	text-align: center;
+	font-size: 30px;
+	color: #4285F4;
+	padding-top: 30px;
+}
+div#regist{
+	text-align: center;
+	padding-bottom: 30px;
+}
+div#idCheck{
+	font-size: 9px;
+	margin-bottom: 15px;
+}
+div#pwCheck{
+	font-size: 9px;
+	margin-bottom: 15px;
+}
+div#button{
+	text-align: center;
+	margin: 30px 0px;
+}
