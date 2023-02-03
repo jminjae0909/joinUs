@@ -21,7 +21,7 @@
 					<li class="dropdown"><a href="#"><span>로그인</span> <i class="bi bi-chevron-down"></i></a>
 
 						<ul>
-							<li><a href="#">마이페이지</a></li>
+							<li><a href="mypage">마이페이지</a></li>
 							<li><a href="#">로그아웃</a></li>
 						</ul>
 					</li>
