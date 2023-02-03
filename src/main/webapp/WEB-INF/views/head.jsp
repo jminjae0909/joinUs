@@ -19,7 +19,7 @@
 					<li><a class="nav-link scrollto" href="#services">새글 쓰기</a></li>
 					<li class="dropdown"><a href="#"><span>로그인</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>
-							<li><a href="#">마이페이지</a></li>
+							<li><a href="mypage">마이페이지</a></li>
 							<li><a href="#">로그아웃</a></li>
 						</ul>
 					</li>
