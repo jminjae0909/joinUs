@@ -69,12 +69,10 @@ li{
 							id="textarea"></textarea> <input type="hidden"
 						name="meeting_number" value="${dto.meeting_number }" />
 						<div>
+							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
 							<input type="submit" id="comments_write_btn" class="btn btn-dark mt-3" value="작성하기">							
 						</div>
 					</td>					
-				</tr>
-				<tr>
-					<td><input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" /></td>
 				</tr>
 			</table>
 		</div>
@@ -86,8 +84,7 @@ li{
 						<li>
 							<span id="comments_users_id">${dto. users_id }</span>
 								<a href="comments_modi?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }">
-									<input type="button" value="[수정]" id="comments_modi" class="btn btn-default btn-xs" /></a>
-																							 
+									<input type="button" value="[수정]" id="comments_modi" class="btn btn-default btn-xs" /></a>																						 
 								<a href="comments_delete?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }">
 									<input type="button" value="[삭제]" id="comments_del" class="btn btn-default btn-xs" /></a>
 							<small> 

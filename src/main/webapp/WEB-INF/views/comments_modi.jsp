@@ -77,13 +77,11 @@ li{
 							id="textarea">${dto2. comments_contents }</textarea> <input
 						type="hidden" name="meeting_number" value="${dto.meeting_number }" />
 						<div>
+							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
 							<input type="submit" id="comments_modi_btn" class="btn btn-dark mt-3" value="수정하기">
 						</div>
 					</td>
-				</tr>
-				<tr>
-					<td><input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" /></td>
-				</tr>
+				</tr>	
 			</table>
 		</div>
 		<br />
