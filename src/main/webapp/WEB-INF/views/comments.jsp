@@ -23,8 +23,38 @@
 	crossorigin="anonymous"></script>
 </head>
 
-<body>
+<style>
+li{
+	list-style: none	
+}
+#comments_users_id{
+	margin-left : 20px;
+	font-size: 20px;
+}
+#comments_date{
+	float:right;
+	text-align: right;
+}
 
+#comments_contents{
+	margin-bottom: 50px; 
+	margin-top: 20px; 
+	border-bottom: 1px solid #dee2e6;
+}
+#comments_modi{
+	margin-left:0;	
+}
+#comments_del{
+	margin-left: -30px;
+}
+
+#comments_write_btn{
+	margin-bottom: 50px;
+}
+
+</style>
+
+<body>
 
 	<form action="comments_write" method="post">
 		<div>
@@ -39,36 +69,36 @@
 							id="textarea"></textarea> <input type="hidden"
 						name="meeting_number" value="${dto.meeting_number }" />
 						<div>
-							<input type="submit" class="btn btn-dark mt-3" value="작성하기">
-						</div></td>
+							<input type="submit" id="comments_write_btn" class="btn btn-dark mt-3" value="작성하기">							
+						</div>
+					</td>					
 				</tr>
 				<tr>
-					<td><td><input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" /></td></td>
+					<td><input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" /></td>
 				</tr>
 			</table>
 		</div>
+		<br />
 		<div class="container">
 			<table class="table">
 				<c:forEach var="dto" items="${list}">
 					<ul>
-						<li style="list-style: none"><span style="font-size: 25px;">${dto. users_id }</span>
-							<small> <span style="text-align: right;">${dto. comments_date }</span>
-						</small>
-							<div>
+						<li>
+							<span id="comments_users_id">${dto. users_id }</span>
 								<a href="comments_modi?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }">
-									<input type="button" value="[수정]" id="comments_modi" class="btn btn-default btn-xs" /></a>																	 
+									<input type="button" value="[수정]" id="comments_modi" class="btn btn-default btn-xs" /></a>
+																							 
 								<a href="comments_delete?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }">
-									<input type="button" value="[삭제]" class="btn btn-default btn-xs" /></a>
-							</div>
-
-							<div>
-								<div
-									style="margin-bottom: 50px; margin-top: 20px; border-bottom: 1px solid #dee2e6;">
-									<ul>
-										<li style="list-style: none">${dto. comments_contents }</li>
-									</ul>
-									<br />
-								</div>
+									<input type="button" value="[삭제]" id="comments_del" class="btn btn-default btn-xs" /></a>
+							<small> 
+							<span id="comments_date">${dto. comments_date }</span>
+							</small>
+							
+							<div id="comments_contents">
+								<ul>
+									<li>${dto. comments_contents }</li>
+								</ul>
+								<br />
 							</div>
 						</li>
 					</ul>
