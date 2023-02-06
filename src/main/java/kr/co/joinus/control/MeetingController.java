@@ -64,14 +64,14 @@ public class MeetingController {
 	
 	@GetMapping("/detail")
 	public String detail(@RequestParam("meeting_number")int meeting_number, Model model) {
+				
 		MeetingDTO dto = service.selectOne(meeting_number);
+		
 		List<CommentsDTO> list = commentsservice.selectList(meeting_number);
-
+		
 		model.addAttribute("dto", dto);
 		model.addAttribute("list", list);
 		
-
-
 		return "detail";
 	}
 	

@@ -63,14 +63,19 @@ li{
 		<div>
 			<table class="table">
 				<tr>
-					<td><input type="text" name="users_id" id="" /> <textarea
+					<td><input type="hidden" name="users_id" id="users_id" value="${ldto.users_id }"/> <textarea
 							class="form-control" placeholder="댓글을 입력하세요."
 							name="comments_contents" maxlength="2048" cols="100"
 							id="textarea"></textarea> <input type="hidden"
 						name="meeting_number" value="${dto.meeting_number }" />
 						<div>
 							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
+							<c:if test="${ldto.users_id eq null }">
+							<a href="/login"><input type="button" id="comments_write_btn" class="btn btn-dark mt-3" value="로그인"></a>
+							</c:if>	
+							<c:if test="${ldto.users_id ne null }">					
 							<input type="submit" id="comments_write_btn" class="btn btn-dark mt-3" value="작성하기">							
+							</c:if>
 						</div>
 					</td>					
 				</tr>

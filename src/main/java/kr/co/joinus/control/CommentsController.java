@@ -3,6 +3,7 @@ package kr.co.joinus.control;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.joinus.dto.CommentsDTO;
 import kr.co.joinus.dto.MeetingDTO;
+import kr.co.joinus.dto.UsersDTO;
 import kr.co.joinus.service.CommentsService;
 import kr.co.joinus.service.MeetingService;
+import kr.co.joinus.service.UsersService;
 
 
 
@@ -28,6 +31,8 @@ public class CommentsController {
 	@Autowired
 	CommentsService commentsservice;
 	
+	@Autowired
+	UsersService usersservice;
 	
 	@PostMapping("/meeting/comments_write")
 	public String WriteOk(@ModelAttribute("dto")CommentsDTO dto,

@@ -71,7 +71,7 @@ li{
 		<div  class="container">
 			<table class="table">
 				<tr>
-					<td><input type="hidden" name="users_id" id="users_id" value="${dto.users_id }"/> <textarea
+					<td><input type="hidden" name="users_id" id="users_id" value="${ldto.users_id }"/> <textarea
 							class="form-control" placeholder="댓글을 입력하세요."
 							name="comments_contents" maxlength="2048" cols="100"
 							id="textarea">${dto2. comments_contents }</textarea> <input
