@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../views/script.jsp"%>
 
 
 <!DOCTYPE html>
@@ -377,9 +378,11 @@ li{
 
 <body>
 
+	<jsp:include page="head.jsp" />
+
 	<div class="container">
 		<form action="modify" method="post">
-			<input type="hidden" name="users_id" id="users_id" value="${dto.users_id }" />
+			<input type="hidden" name="users_id" id="users_id" value="${meetingdto.users_id }" />
 			<div>
 			<section>
 				<div class="information_title">
@@ -400,7 +403,7 @@ li{
 							</select>
 						</div>
 						<div>
-							<input type="hidden" name="" id="meeting_category_val" value="${dto.meeting_category }" />					
+							<input type="hidden" name="" id="meeting_category_val" value="${meetingdto.meeting_category }" />					
 						</div>
 					</li>
 					<li class="one_line_li2">
@@ -418,7 +421,7 @@ li{
 							</select>
 						</div>
 						<div >
-							<input type="hidden" name="" id="meeting_membernum_val" value="${dto.meeting_membernum }" />
+							<input type="hidden" name="" id="meeting_membernum_val" value="${meetingdto.meeting_membernum }" />
 						</div>
 					</li>
 				</ul>
@@ -438,7 +441,7 @@ li{
 							</select>
 						</div>
 						<div>
-							<input type="hidden" name="" id="meeting_onoff_val" value="${dto.meeting_onoff }" />					
+							<input type="hidden" name="" id="meeting_onoff_val" value="${meetingdto.meeting_onoff }" />					
 						</div>
 					</li>
 					<li class="two_line_li2">
@@ -454,7 +457,7 @@ li{
 							</select>
 						</div>
 						<div>
-							<input type="hidden" name="" id="meeting_period_val" value="${dto.meeting_period }" />					
+							<input type="hidden" name="" id="meeting_period_val" value="${meetingdto.meeting_period }" />					
 						</div>
 					</li>
 				</ul>
@@ -467,13 +470,13 @@ li{
 						<div>
 							<input type="text" id="date-picker"
 							class="form-control bg-white border-1 small" aria-label="Search"
-							aria-describedby="basic-addon2" name="meeting_startdate" value="${dto.meeting_startdate}">					
+							aria-describedby="basic-addon2" name="meeting_startdate" value="${meetingdto.meeting_startdate}">					
 						</div>
 					</li>
 					<li class="three_line_li2">
 						<label class="label">모임 장소</label>
 						<div>
-							<input type="text"  class="form-control" name="meeting_place" id="addr" size="30" placeholder="주소 찾기" value="${dto.meeting_place }"/>											
+							<input type="text"  class="form-control" name="meeting_place" id="addr" size="30" placeholder="주소 찾기" value="${meetingdto.meeting_place }"/>											
 						</div>
 					</li>
 				</ul>
@@ -484,7 +487,7 @@ li{
 					<li class="four_line_li1">
 						<label class="label">오픈 카톡</label>
 						<div>
-							<input type="text" class="form-control" name="meeting_contact" id="" value="${dto.meeting_contact }" />					
+							<input type="text" class="form-control" name="meeting_contact" id="" value="${meetingdto.meeting_contact }" />					
 						</div>
 					</li>
 					<li class="four_line_li2">
@@ -507,7 +510,7 @@ li{
 						</div>
 						</div>
 						<div>
-							<input type="hidden" name="" id="meeting_skill_val" value="${dto.meeting_skill }" />					
+							<input type="hidden" name="" id="meeting_skill_val" value="${meetingdto.meeting_skill }" />					
 						</div>
 					</li>
 				</ul>
@@ -526,7 +529,7 @@ li{
 							</select>
 						</div>
 						<div>
-							<input type="hidden" name="" id="meeting_state_val" value="${dto.meeting_state }" />					
+							<input type="hidden" name="" id="meeting_state_val" value="${meetingdto.meeting_state }" />					
 						</div>
 					</li>
 				</ul>
@@ -546,13 +549,13 @@ li{
 					<li class="five_line_li1">
 						<label class="label">제목</label>
 						<div>							
-							<input class="form-control" type="text" name="meeting_title" id="meeting_title" value="${dto.meeting_title }" />					
-							<input type="hidden" name="meeting_number" value="${dto.meeting_number }" />
+							<input class="form-control" type="text" name="meeting_title" id="meeting_title" value="${meetingdto.meeting_title }" />					
+							<input type="hidden" name="meeting_number" value="${meetingdto.meeting_number }" />
 							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
 						</div>
 						<br>
 						<div>
-							<textarea class="summernote" name="meeting_contents">${dto.meeting_contents }</textarea> 
+							<textarea class="summernote" name="meeting_contents">${meetingdto.meeting_contents }</textarea> 
 						</div>
 					</li>					
 				</ul>

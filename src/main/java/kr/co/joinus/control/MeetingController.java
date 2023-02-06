@@ -78,12 +78,12 @@ public class MeetingController {
 	
 	@GetMapping("/modify")
 	public String modifyForm(@RequestParam("meeting_number")int meeting_number, Model model) {
-				
-		MeetingDTO dto = service.selectOne(meeting_number);
+								
+		MeetingDTO meetingdto = service.selectOne(meeting_number);
 		
-		model.addAttribute("dto", dto);
+		model.addAttribute("meetingdto", meetingdto);
 
-		System.out.println(dto);
+		System.out.println(meetingdto);
 
 		return "/modifyForm";
 	}
