@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>map.jsp</h1>
 	
 	<div id="map" style="width: 770px; height: 400px;"></div>
 	

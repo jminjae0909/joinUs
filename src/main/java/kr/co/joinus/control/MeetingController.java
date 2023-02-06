@@ -67,7 +67,6 @@ public class MeetingController {
 		MeetingDTO dto = service.selectOne(meeting_number);
 		List<CommentsDTO> list = commentsservice.selectList(meeting_number);
 
-		System.out.println(dto.getMeeting_number());
 		model.addAttribute("dto", dto);
 		model.addAttribute("list", list);
 		

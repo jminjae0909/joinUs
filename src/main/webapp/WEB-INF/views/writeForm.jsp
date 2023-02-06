@@ -380,6 +380,10 @@ a{
 	text-decoration: none;
 }
 
+a:hover{
+	text-decoration:none;
+}
+
 
 </style>
 
@@ -404,8 +408,8 @@ a{
 							<select class="form-select" aria-label="Default select example"
 								name="meeting_category" id="meeting_category">
 								<option selected>선택하세요</option>
+								<option value="0">프로젝트</option>
 								<option value="1">스터디</option>
-								<option value="2">프로젝트</option>
 							</select>
 						</div>
 					</li>
