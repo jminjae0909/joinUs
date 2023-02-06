@@ -22,11 +22,11 @@
 
 					<li><a class="nav-link scrollto" href="/meeting/write">새글 쓰기</a></li>
 					<li class="dropdown">
-						<c:if test="${dto.users_id eq null }">
+						<c:if test="${ldto.users_id eq null }">
 							<a href="/login"><span>로그인</span></a>
 						</c:if>
-						<c:if test="${dto.users_id ne null }">
-							<a href="#"><span>${dto.users_nick}님, 환영합니다</span> <i class="bi bi-chevron-down"></i></a>
+						<c:if test="${ldto.users_id ne null }">
+							<a href="#"><span>${ldto.users_nick}님, 환영합니다</span> <i class="bi bi-chevron-down"></i></a>
 							<ul>
 								<li><a href="#">마이페이지</a></li>
 								<li>

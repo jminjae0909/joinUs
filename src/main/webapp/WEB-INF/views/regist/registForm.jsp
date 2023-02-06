@@ -23,53 +23,73 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
-<div class="container">
+
+<div class="container" id="container">
 	<div id="logo">
-		<a href="/joinus/main" >CODEE</a>
+		<a id="main" href="/joinus/main" >CODEE<span id="yellow">.</span></a>
 	</div>
 	<div id="regist">회원가입</div>
 	<form action="/regist" method="post" onsubmit="return checkAll()">
-		<h6>아이디</h6>
+			<label for="id" class="form-label">아이디</label>
 		<div class="input-group mb-3">
 			<input type="text" id="id" name="users_id" class="form-control" placeholder="아이디" aria-label="Recipient's username" aria-describedby="button-addon2">
   			<button id="idBtn" class="btn btn-outline-secondary" type="button" id="button-addon2">중복확인</button>
 		</div>
 		<div id="idCheck"></div>
-		<h6>이메일</h6>
-		<div class="input-group mb-3">
-  			<input type="text" id="email1" name="email1" class="form-control" placeholder="이메일 아이디" aria-label="Username" value="${emailId }" >
-  			<span class="input-group-text">@</span>
-  			<input type="text" id="email2" name="email2" class="form-control" placeholder="이메일 주소" aria-label="Server" value="${emailDomain}" >
-  			<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
-  				<ul id="mytype" class="dropdown-menu dropdown-menu-end">
-    				<li><a class="dropdown-item" href="#">naver.com</a></li>
-    				<li><a class="dropdown-item" href="#">gmail.com</a></li>
-    				<li><a class="dropdown-item" href="#">daum.net</a></li>
-    				<li><a class="dropdown-item" href="#">hanmail.net</a></li>
-  				</ul>
-		</div>
-		<h6>비밀번호</h6>
+		<label for="email" class="form-label">이메일</label>
+		<c:if test="${emailId ne null && emailDomain ne null }">
+			<div class="input-group mb-3">
+	  			<input type="text" id="email1" name="email1" class="form-control" placeholder="이메일 아이디" aria-label="Username" value="${emailId }" readonly >
+	  			<span class="input-group-text">@</span>
+	  			<input type="text" id="email2" name="email2" class="form-control" placeholder="이메일 주소" aria-label="Server" value="${emailDomain}" readonly >
+	  			<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled="disabled"></button>
+	  				<ul id="mytype" class="dropdown-menu dropdown-menu-end">
+	    				<li><a class="dropdown-item" href="#">naver.com</a></li>
+	    				<li><a class="dropdown-item" href="#">gmail.com</a></li>
+	    				<li><a class="dropdown-item" href="#">daum.net</a></li>
+	    				<li><a class="dropdown-item" href="#">hanmail.net</a></li>
+	  				</ul>
+	  		</div>
+		</c:if>
+		<c:if test="${emailId eq null && emailDomain eq null }">
+			<div class="input-group mb-3">
+				<input type="text" id="email1" name="email1" class="form-control" placeholder="이메일 아이디" aria-label="Username" >
+	  			<span class="input-group-text">@</span>
+	  			<input type="text" id="email2" name="email2" class="form-control" placeholder="이메일 주소" aria-label="Server" >
+	  			<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
+	  				<ul id="mytype" class="dropdown-menu dropdown-menu-end">
+	    				<li><a class="dropdown-item" href="#">naver.com</a></li>
+	    				<li><a class="dropdown-item" href="#">gmail.com</a></li>
+	    				<li><a class="dropdown-item" href="#">daum.net</a></li>
+	    				<li><a class="dropdown-item" href="#">hanmail.net</a></li>
+	  				</ul>
+	  		</div>
+	  		<div class="d-grid gap-2">
+  				<button class="btn btn-secondary" type="button">이메일 인증하기</button>
+			</div>
+		</c:if>
+		<label for="password" class="form-label">비밀번호</label>
 		<div class="input-group mb-3">
 			<input type="password" id="pw" name="users_pwd" class="form-control" aria-label="Text input with dropdown button" placeholder="비밀번호 입력">
 		</div>
-		<h6>비밀번호 확인</h6>
+		<label for="password" class="form-label">비밀번호 확인</label>
 			<div class="input-group mb-3">
 				<input type="password" id="rePw" name="rePw" class="form-control" aria-label="Text input with dropdown button" placeholder="비밀번호 확인">
 			</div>
 		<div id="pwCheck"></div>
-		<h6>닉네임</h6>
+		<label for="nickname" class="form-label">닉네임</label>
 		<div class="input-group mb-3">
 			<input type="text" id="nickname" name="users_nick" class="form-control" aria-label="Text input with dropdown button" placeholder="닉네임 입력">
 		</div>
-		<h6>이름</h6>
+		<label for="name" class="form-label">이름</label>
 		<div class="input-group mb-3">
 			<input type="text" id="name" name="users_name" class="form-control" aria-label="Text input with dropdown button" placeholder="이름 입력">
 		</div>
-		<h6>전화번호</h6>
+		<label for="phone" class="form-label">전화번호</label>
 			<div class="input-group mb-3">
 				<input type="text" id="phone" name="users_phone" class="form-control" aria-label="Text input with dropdown button" placeholder="하이픈(-)없이 입력">
 			</div>
-		<h6>주소</h6>
+		<label for="address" class="form-label">주소</label>
 		<div class="input-group mb-3">
 			<input type="text" id="zipcode" name="users_zipcode" class="form-control" placeholder="우편번호" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
   			<button class="btn btn-outline-secondary" type="button" id="searchAddrs">주소찾기</button>
@@ -82,8 +102,8 @@
 		</div>
 		<div id="button">
 			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
-			<button type="submit" class="btn btn-primary">회원가입하기</button>
-			<a href="/main"><button type="button" class="btn btn-secondary">취소하기</button></a>
+			<button type="submit" class="btn btn-warning">회원가입하기</button>
+			<a href="/joinus/main"><button type="button" class="btn btn-secondary">취소하기</button></a>
 		</div>
 	</form>
 </div>

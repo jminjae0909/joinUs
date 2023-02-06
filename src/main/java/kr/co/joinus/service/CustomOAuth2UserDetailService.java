@@ -97,7 +97,7 @@ public class CustomOAuth2UserDetailService extends DefaultOAuth2UserService {
 			try {
 				PrintWriter out = resp.getWriter();
 
-				resp.sendRedirect("/regist");
+				resp.sendRedirect("/registWithSns");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

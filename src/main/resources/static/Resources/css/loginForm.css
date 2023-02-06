@@ -2,6 +2,10 @@ body{
 	background-color: #FAFAFA;
 }
 
+span#yellow{
+	color: yellow;
+}
+
 div#container{
 	text-align: center;
 	width: 300px;
@@ -15,6 +19,7 @@ h1{
 }
 
 a#main{
+	font-style: bold;
 	text-decoration: none;
 	color: black;
 }

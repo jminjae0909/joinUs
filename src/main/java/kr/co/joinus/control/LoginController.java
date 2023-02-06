@@ -35,7 +35,7 @@ public class LoginController {
 		if(dto == null && result == 0) {
 			return "regist/registForm";
 		}else {
-			session.setAttribute("dto", dto);
+			session.setAttribute("ldto", dto);
 			return "main";
 		}
 	}
