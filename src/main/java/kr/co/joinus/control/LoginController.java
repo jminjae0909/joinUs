@@ -30,7 +30,7 @@ public class LoginController {
 	
 	@PostMapping("/login")
 	public String registForm(@RequestParam("users_id") String id, HttpSession session, HttpServletResponse resp) throws IOException {
-		UsersDTO dto = service.getMemberByEmail(id);
+		UsersDTO dto = service.getMemberFindById(id);
 		int result = service.isExistId(id);
 		if(dto == null && result == 0) {
 			return "regist/registForm";
@@ -39,6 +39,11 @@ public class LoginController {
 			return "main";
 		}
 	}
+	
+//	@PostMapping("/loginOther")
+//	public String regist(@RequestParam("id") String id) {
+//		UsersDTO dto = service.getMemberByEmail(id)
+//	}
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
