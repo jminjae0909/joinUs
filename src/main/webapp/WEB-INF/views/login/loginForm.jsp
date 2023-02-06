@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../script.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,37 +15,41 @@
 <link rel="stylesheet" href="../Resources/css/loginForm.css">
 
 </head>
-<body>
-<div class="container">
-	<h1>loginForm.jsp</h1>
+<body bgcolor="#FAFAFA">
+
+<div class="container" id="container">
+	<h1><a id="main" href="/joinus/main">CODEE</a></h1>
 	<form action="/login" method="post">
-	<table>
-		<tr>
-			<th>ID</th>
-			<td>
-				<input type="text" name="users_id" id="" />
-			</td>
-		</tr>
-		<tr>
-			<th>pw</th>
-			<td>
-				<input type="password" name="users_pwd" id="" />
-				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<a class="btn btn-outline-primary" href="oauth2/authorization/google">구글 로그인</a>
-				<a class="btn btn-outline-primary" href="oauth2/authorization/naver">네이버 로그인</a>
-				<a class="btn btn-outline-primary" href="oauth2/authorization/kakao">카카오 로그인</a>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<input type="submit" value="로그인하기" />
-			</td>
-		</tr>
-	</table>
+		<div class="mb-3">
+  			<input type="text" class="form-control" id="inputId" placeholder="아이디" name="users_id">
+		</div>
+		<div class="mb-3">
+			<input type="password" class="form-control" id="inputPwd" placeholder="비밀번호" name="users_pwd">
+		</div>
+		<div class="d-grid gap-2">
+  			<button id="loginBtn" class="btn btn-warning btn-lg" type="button">로그인</button>
+		</div>
+		<span><a id="re" href="">비밀번호 재설정</a></span>
+		<span><a id="re" href="">회원가입</a></span>
+		
+		<div id="msg">SNS계정으로 간편하게 로그인/회원가입</div>
+		<div id="logo">
+			<div class="logo">
+				<a href="oauth2/authorization/kakao">
+					<img id="kakao" src="../Resources/img/kakao.png" alt="" />
+				</a>
+			</div>
+			<div class="logo">
+				<a href="oauth2/authorization/naver">
+					<img id="naver" src="../Resources/img/naver.png" alt="" />
+				</a>
+			</div>
+			<div class="logo">
+				<a href="oauth2/authorization/google">
+					<img id="google" src="../Resources/img/google.png" alt="" />
+				</a>
+			</div>
+		</div>
 	</form>
 </div>
 </body>

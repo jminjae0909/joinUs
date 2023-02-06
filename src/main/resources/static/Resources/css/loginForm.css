@@ -1,0 +1,95 @@
+body{
+	background-color: #FAFAFA;
+}
+
+div#container{
+	text-align: center;
+	width: 300px;
+	position: relative;
+	top: 50px;
+}
+
+h1{
+	text-align: center;
+	margin: 20px;
+}
+
+a#main{
+	text-decoration: none;
+	color: black;
+}
+
+button#loginBtn{
+	color: white;
+	font-size: 15px;
+	padding: 12px 0px;
+	border-radius: 4px;
+}
+
+input#inputId{
+	border-radius: 4px 4px 0px 0px;
+	padding: 13px 15px 14px;
+	position: relative;
+	top: 8px;
+}
+
+input#inputPwd{
+	border-radius: 0px 0px 4px 4px;
+	padding: 13px 15px 14px;
+	position: relative;
+	bottom: 9px;
+}
+
+input::placeholder{
+	font-size: 12px;
+	color: #cccccc;
+}
+
+input:focus{
+	outline: none !important; 
+	border-color: #FFCA2C; 
+}
+
+span{
+	text-align: center;
+	margin-top: 20px; 
+}
+
+a#re{
+	font-size: 12px;
+	text-decoration: none;
+	text-align: center;
+}
+
+div#msg{
+	text-align: center;
+	font-size: 12px;
+	margin-top: 30px;
+	margin-bottom: 10px;
+	color: #818381;
+}
+
+div#logo{
+	display: flex;
+    justify-content: center;
+	height: 100px;
+	text-align: center;
+}
+div.logo{
+	float: left;
+	margin: 10px;
+	text-align: center;
+}
+
+img#kakao{
+	width: 45px;
+	float: left;
+}
+
+img#naver{
+	width: 45px;
+}
+
+img#google{
+	width: 45px;
+}
