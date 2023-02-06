@@ -78,8 +78,9 @@ public class MeetingController {
 	
 	@GetMapping("/modify")
 	public String modifyForm(@RequestParam("meeting_number")int meeting_number, Model model) {
+				
 		MeetingDTO dto = service.selectOne(meeting_number);
-
+		
 		model.addAttribute("dto", dto);
 
 		System.out.println(dto);
@@ -90,6 +91,7 @@ public class MeetingController {
 	@PostMapping("/modify")
 	public String modifyOk(@ModelAttribute("dto")MeetingDTO dto) {
 		
+
 		service.updateOne(dto);
 
 		return "redirect:/joinus/main";
