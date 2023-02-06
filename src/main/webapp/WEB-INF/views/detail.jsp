@@ -274,8 +274,8 @@ a{
 		<tr>
 				<td colspan="4">
 					<a href="main" class="btn btn-outline-primary">목록</a>
-					<a href="/meeting/modify?meeting_number=${meetingdto.meeting_number }" class="btn btn-outline-primary">수정</a>
-					<a href="/meeting/delete?meeting_number=${meetingdto.meeting_number }" class="btn btn-outline-primary">삭제</a>
+					<a href="/meeting/modify?meeting_number=${dto.meeting_number }" class="btn btn-outline-primary">수정</a>
+					<a href="/meeting/delete?meeting_number=${dto.meeting_number }" class="btn btn-outline-primary">삭제</a>
 				</td>
 				</tr>
 		</table>

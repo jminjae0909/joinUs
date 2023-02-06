@@ -35,5 +35,10 @@
 		SELECT * FROM meeting_comments
 		WHERE comments_number = #{comments_number}
 	</select>
+	
+	<delete id="deletemnum" parameterType="int">
+		DELETE FROM meeting_comments
+		WHERE meeting_number = #{meeting_number} 
+	</delete>
 
 </mapper>

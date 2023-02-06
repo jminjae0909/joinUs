@@ -17,5 +17,7 @@ public interface CommentsDAO {
 	void updateOne(CommentsDTO dto);
 	void deleteOne(int comments_number);
 	CommentsDTO getOne(int comments_number);
+	void deletemnum(int meeting_number);
+	
 	
 }

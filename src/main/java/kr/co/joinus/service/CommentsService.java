@@ -37,4 +37,8 @@ public class CommentsService {
 	public CommentsDTO selectOne(int comments_number) {
 		return dao.getOne(comments_number);
 	}
+	
+	public void deletemnum(int meeting_number) {
+		dao.deletemnum(meeting_number);
+	}
 }

@@ -393,7 +393,7 @@ a:hover{
 
 	<div class="container">
 		<form action="write" method="post">
-			<input type="hidden" name="users_id" id="users_id" value="${dto.users_id}" />
+			<input type="hidden" name="users_id" id="users_id" value="${ldto.users_id}" />
 			<div>
 			<section>
 				<div class="information_title">

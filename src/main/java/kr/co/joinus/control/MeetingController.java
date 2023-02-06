@@ -98,7 +98,7 @@ public class MeetingController {
 	
 	@GetMapping("/delete")
 	public String delete(@RequestParam("meeting_number")int meeting_number) {
-
+		commentsservice.deletemnum(meeting_number);
 		service.deleteOne(meeting_number);
 		return "redirect:/joinus/main";
 	}
