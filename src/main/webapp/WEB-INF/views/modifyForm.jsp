@@ -374,6 +374,10 @@ li{
     font-size: 18px;
 }
 
+a{
+	text-decoration: none;
+}
+
 </style>
 
 <body>
