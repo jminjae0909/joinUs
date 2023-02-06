@@ -8,6 +8,7 @@
 </head>
 <body>
 	<h1>회원가입이 완료되었습니다</h1>
-	<h2><a href="/main">메인화면으로 이동</a></h2>
+	<h2><a href="/joinus/main">메인화면으로 이동</a></h2>
+	<h2><a href="/login">로그인 화면으로 이동</a></h2>
 </body>
 </html>

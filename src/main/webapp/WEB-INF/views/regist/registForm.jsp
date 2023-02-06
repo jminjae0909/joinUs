@@ -37,6 +37,8 @@
 		</div>
 		<div id="idCheck"></div>
 		<label for="email" class="form-label">이메일</label>
+		
+		<!-- 소셜로그인으로 회원가입 진행하는 경우 -->
 		<c:if test="${emailId ne null && emailDomain ne null }">
 			<div class="input-group mb-3">
 	  			<input type="text" id="email1" name="email1" class="form-control" placeholder="이메일 아이디" aria-label="Username" value="${emailId }" readonly >
@@ -51,8 +53,11 @@
 	  				</ul>
 	  		</div>
 		</c:if>
+		
+		<!-- 일반 회원가입으로 진행하는 경우 -->
 		<c:if test="${emailId eq null && emailDomain eq null }">
 			<div class="input-group mb-3">
+				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
 				<input type="text" id="email1" name="email1" class="form-control" placeholder="이메일 아이디" aria-label="Username" >
 	  			<span class="input-group-text">@</span>
 	  			<input type="text" id="email2" name="email2" class="form-control" placeholder="이메일 주소" aria-label="Server" >
@@ -65,9 +70,14 @@
 	  				</ul>
 	  		</div>
 	  		<div class="d-grid gap-2">
-  				<button class="btn btn-secondary" type="button">이메일 인증하기</button>
+  				<button id="checkEmail" class="btn btn-secondary" type="button">이메일 인증하기</button>
+			</div>
+			<div class="mb-3">
+  				<label for="memailconfirm" id="memailconfirmTxt" class="form-label">인증번호</label>
+  				<input type="text" class="form-control" id="memailconfirm" placeholder="인증번호 입력">
 			</div>
 		</c:if>
+		
 		<label for="password" class="form-label">비밀번호</label>
 		<div class="input-group mb-3">
 			<input type="password" id="pw" name="users_pwd" class="form-control" aria-label="Text input with dropdown button" placeholder="비밀번호 입력">
