@@ -98,6 +98,8 @@
   -webkit-animation-duration: 3.0s;
   animation-name: fade;
   animation-duration: 3.0s;
+  
+  -webkit-animation-fill-mode: both;
 }
 
 @-webkit-keyframes fade {
@@ -124,7 +126,8 @@
 	showSlides(slideIndex);
 	
 	// Auto Move Slide
-	var sec = 3000;
+	var sec = 7000;
+	
 	setInterval(function(){
 	 slideIndex++;
 	 showSlides(slideIndex);

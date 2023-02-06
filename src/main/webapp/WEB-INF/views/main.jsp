@@ -228,7 +228,7 @@ label {
 
 									<div class="studyItem_schedule">
 										<p class="startedate">시작 예정일 |
-											${dto.meeting_startdate.substring(0,10) }</p>
+											${dto.meeting_startdate }</p>
 									</div>
 									<h4 class="studyItem_title">${dto.meeting_title }</h4>
 									<p class="studyItem_place">${dto.meeting_place }</p>
