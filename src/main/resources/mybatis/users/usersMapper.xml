@@ -9,6 +9,11 @@
 		WHERE users_email = #{users_email}
 	</select>
 	
+	<select id="getMemberFindById" parameterType="String" resultType="UsersDTO">
+		SELECT * FROM users
+		WHERE users_id = #{users_id}
+	</select>
+	
 	<insert id="insertOne" parameterType="UsersDTO">
 		INSERT INTO users
 		VALUES (#{users_id}, #{users_pwd}, #{users_name}, #{users_phone}, #{users_email}, #{users_nick}, now(), #{users_addrs}, 0, 0, 0, null, 'USER', #{users_zipcode})

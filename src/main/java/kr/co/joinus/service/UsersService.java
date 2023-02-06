@@ -16,6 +16,10 @@ public class UsersService {
 		return dao.getMemberFindByEmail(email);
 	}
 	
+	public UsersDTO getMemberFindById(String id) {
+		return dao.getMemberFindById(id);
+	}
+	
 	public void addUsers(UsersDTO dto) {
 		dao.insertOne(dto);
 	}
