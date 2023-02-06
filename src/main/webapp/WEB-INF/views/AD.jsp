@@ -98,6 +98,8 @@
   -webkit-animation-duration: 3.0s;
   animation-name: fade;
   animation-duration: 3.0s;
+  
+  -webkit-animation-fill-mode: both;
 }
 
 @-webkit-keyframes fade {
@@ -124,7 +126,8 @@
 	showSlides(slideIndex);
 	
 	// Auto Move Slide
-	var sec = 3000;
+	var sec = 7000;
+	
 	setInterval(function(){
 	 slideIndex++;
 	 showSlides(slideIndex);
@@ -168,6 +171,29 @@
 	slides[n].style.display = "block";
 	dots[n].className += " active";
 	}
+	
+$(function(){
+	
+	$("#main2").on("click" ,function(){
+		window.open('https://dent-carver-46c.notion.site/CODEE-cbc3f0fd4b9d4e6bbb7f4b9b346b65e3');
+		
+	})
+	$("#main1").on("click" ,function(){
+		window.open('https://dent-carver-46c.notion.site/CODEE-4fa9953f24c24d95a3f4c85f647a58f2');
+		
+	})
+	$("#main3").on("click" ,function(){
+		window.open('https://www.jhta.co.kr/main');
+		
+	})
+	$("#main4").on("click" ,function(){
+		window.open('https://www.mega-mgccoffee.com/');
+		
+	})
+	
+})
+
+
 </script>
 </head>
 <body>
@@ -178,30 +204,37 @@
 			<!-- Full-width images with number and caption text -->
 			<div class="mySlides fade">
 				<img
-					src="https://static.coupangcdn.com/fa/cmg_paperboy/image/1675236071995/230202_C1_%EB%B7%B0%ED%8B%B0-%EB%93%9C%EB%9F%AD%EC%8A%A4%ED%86%A0%EC%96%B4_SMD-25129_PC.jpg"
-					style="width: 100%">
-				<div class="text">ACNE STUDIO</div>
+					src="${path}/images/main2.png"
+					style="width: 100%" id="main2">
+				<div class="text">CODEE</div>
 			</div>
 
 			<div class="mySlides fade">
 				<img
-					src="https://static.coupangcdn.com/na/cmg_paperboy/image/1675239647653/%5B%EC%88%98%EC%A0%951%5D230202_T_%EC%99%80%EC%9A%B0%EC%9C%84%ED%81%AC_A_SMD-25134_PC.jpg"
-					style="width: 100%">
-				<div class="text">ACNE STUDIO</div>
+					src="${path}/images/main1.png"
+					style="width: 100%" id="main1">
+				<div class="text">CODEE</div>
 			</div>
 
 			<div class="mySlides fade">
 				<img
-					src="https://divisare-res.cloudinary.com/images/f_auto,q_auto,w_800/v1491425448/rnelglmoujifzlbzykxw/acne-studios-acne-studio-potsdamer-strasse.jpg"
-					style="width: 100%">
-				<div class="text">ACNE STUDIO</div>
+					src="${path}/images/main3.png"
+					style="width: 100%" id="main3">
+				<div class="text">CODEE</div>
 			</div>
 
 			<div class="mySlides fade">
 				<img
-					src="https://divisare-res.cloudinary.com/images/f_auto,q_auto,w_800/v1491425434/coct9kmra7uhmeu4cxto/acne-studios-acne-studio-potsdamer-strasse.jpg"
+					src="${path}/images/main4.png"
 					style="width: 100%">
-				<div class="text">ACNE STUDIO</div>
+				<div class="text">CODEE</div>
+			</div>
+			
+			<div class="mySlides fade">
+				<img
+					src="${path}/images/main4.png"
+					style="width: 100%">
+				<div class="text">CODEE</div>
 			</div>
 
 			<!-- Next and previous buttons -->
@@ -212,10 +245,11 @@
 
 		<!-- The dots/circles -->
 		<div style="text-align: center">
-			<span class="dot" onclick="currentSlide(0)"></span> <span class="dot"
-				onclick="currentSlide(1)"></span> <span class="dot"
-				onclick="currentSlide(2)"></span> <span class="dot"
-				onclick="currentSlide(3)"></span>
+			<span class="dot" onclick="currentSlide(0)"></span> 
+			<span class="dot" onclick="currentSlide(1)"></span> 
+			<span class="dot" onclick="currentSlide(2)"></span>
+			<span class="dot" onclick="currentSlide(3)"></span>
+			<span class="dot" onclick="currentSlide(4)"></span>
 		</div>
 	</section>
 </body>

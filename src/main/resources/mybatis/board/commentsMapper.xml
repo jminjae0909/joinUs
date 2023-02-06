@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.co.joinus.dao.CommentsDAO">
+
+	<insert id="insertOne" parameterType="CommentsDTO">
+		INSERT INTO meeting_comments
+		VALUES (#{comments_number}, #{users_id}, #{meeting_number}, #{comments_contents}, NOW())
+	</insert>
+	
+	<select id="getAll" resultType="CommentsDTO">
+		SELECT * FROM meeting_comments
+		
+	</select>
+	
+	<select id="getlist" parameterType="int" resultType="CommentsDTO">
+		SELECT * FROM meeting_comments
+		WHERE meeting_number = #{meeting_number}
+	</select>
+	
+	<update id="updateOne" parameterType="CommentsDTO">
+		UPDATE meeting_comments
+		SET comments_contents=#{comments_contents}
+		WHERE comments_number=#{comments_number}	
+	</update>
+	
+	<delete id="deleteOne" parameterType="int">
+		DELETE FROM meeting_comments
+		WHERE comments_number = #{comments_number} 
+	</delete>
+	
+	<select id="getOne" parameterType="int" resultType="CommentsDTO">
+		SELECT * FROM meeting_comments
+		WHERE comments_number = #{comments_number}
+	</select>
+
+</mapper>

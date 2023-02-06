@@ -71,7 +71,7 @@
 		</selectKey>
 		INSERT INTO meeting		
 		VALUES (#{meeting_number}, #{users_id}, NOW(), #{meeting_title}, #{meeting_contents}, 
-				#{meeting_state}, 0, #{meeting_membernum}, #{meeting_contact}, #{meeting_onoff}, 
+				0, 0, #{meeting_membernum}, #{meeting_contact}, #{meeting_onoff}, 
 				#{meeting_startdate}, #{meeting_period}, #{meeting_place}, #{meeting_category}, #{meeting_skill} )
 	</insert>
 	

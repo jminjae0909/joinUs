@@ -84,7 +84,6 @@
 			</tr>
 		</table>	
 		
-		<%@ include file="/WEB-INF/views/comments.jsp" %>
 		
 	</div>
 </body>
