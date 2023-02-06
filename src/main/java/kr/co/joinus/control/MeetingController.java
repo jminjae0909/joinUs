@@ -59,7 +59,6 @@ public class MeetingController {
 		model.addAttribute("dto", dto);
 		model.addAttribute("list", list);
 		
-		System.out.println(list);
 
 
 		return "detail";
