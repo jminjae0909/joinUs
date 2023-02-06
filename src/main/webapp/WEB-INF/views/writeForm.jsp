@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="../views/script.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -196,6 +197,10 @@
 
 li{
 	list-style: none
+}
+
+.information_title{
+	margin-top: 100px;
 } 
   
 .form-select{
@@ -376,9 +381,11 @@ li{
 
 <body>
 
+	<jsp:include page="head.jsp" />
+
 	<div class="container">
 		<form action="write" method="post">
-			<input type="text" name="users_id" id="users_id" />
+			<input type="hidden" name="users_id" id="users_id" value="${dto.users_id}" />
 			<div>
 			<section>
 				<div class="information_title">

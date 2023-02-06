@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.joinus.dto.CommentsDTO;
 import kr.co.joinus.dto.MeetingDTO;
+import kr.co.joinus.dto.UsersDTO;
 import kr.co.joinus.service.CommentsService;
 import kr.co.joinus.service.MeetingService;
+import kr.co.joinus.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -32,6 +35,8 @@ public class MeetingController {
 	@Autowired
 	CommentsService commentsservice;
 	
+	@Autowired
+	UsersService usersservice;
 	
 	@GetMapping("/write")
 	public String wirteForm() {
@@ -43,9 +48,16 @@ public class MeetingController {
 	@PostMapping("/write")
 	public String WriteOk(@ModelAttribute("dto")MeetingDTO dto,
 						  HttpServletRequest request,
-						  Model model) {			
+						  Model model,
+						  @RequestParam("users_id") String id,
+						  HttpSession session) {			
+		
+		UsersDTO usersdto = usersservice.getMemberFindById(id);
+		
+		session.setAttribute("dto", usersdto);
+		
 		//미팅 등록
-		service.add(dto);
+		service.add(dto);		
 				
 		return "redirect:/joinus/main";		
 	}	
@@ -66,8 +78,9 @@ public class MeetingController {
 	
 	@GetMapping("/modify")
 	public String modifyForm(@RequestParam("meeting_number")int meeting_number, Model model) {
+				
 		MeetingDTO dto = service.selectOne(meeting_number);
-
+		
 		model.addAttribute("dto", dto);
 
 		System.out.println(dto);
@@ -78,6 +91,7 @@ public class MeetingController {
 	@PostMapping("/modify")
 	public String modifyOk(@ModelAttribute("dto")MeetingDTO dto) {
 		
+
 		service.updateOne(dto);
 
 		return "redirect:/joinus/main";

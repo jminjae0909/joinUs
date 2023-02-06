@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -184,6 +185,10 @@
 
 li{
 	list-style: none;
+}
+
+.information_title{
+	margin-top: 100px;
 } 
   
 .form-select{
@@ -371,7 +376,6 @@ li{
 </style>
 
 <body>
-
 
 	<div class="container">
 		<form action="modify" method="post">
