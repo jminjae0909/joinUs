@@ -91,11 +91,13 @@ li{
 					<ul>
 						<li>
 							<span id="comments_users_id">${dto. users_id }</span>
+								<c:if test="${ldto.users_id eq dto.users_id }">
 								<a href="comments_modi?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }">
-									<input type="button" value="[수정]" id="comments_modi" class="btn btn-default btn-xs" /></a>
+									<input type="button" value="수정ㅣ" id="comments_modi" class="btn btn-default btn-xs" /></a>
 									<input type="hidden" name="comments_number" value="${dto2.comments_number }" />															 
 								<a href="comments_delete?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }">
-									<input type="button" value="[삭제]" id="comments_del" class="btn btn-default btn-xs" /></a>
+									<input type="button" value="삭제" id="comments_del" class="btn btn-default btn-xs" /></a>
+								</c:if>
 							<small> 
 							<span id="comments_date">${dto. comments_date }</span>
 							</small>
