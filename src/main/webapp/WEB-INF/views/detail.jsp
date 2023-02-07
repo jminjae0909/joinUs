@@ -273,9 +273,11 @@ a{
 		<table class="table table-striped-columns">
 		<tr>
 				<td colspan="4">
-					<a href="main" class="btn btn-outline-primary">목록</a>
-					<a href="/meeting/modify?meeting_number=${dto.meeting_number }" class="btn btn-outline-primary">수정</a>
-					<a href="/meeting/delete?meeting_number=${dto.meeting_number }" class="btn btn-outline-primary">삭제</a>
+					<a href="/joinus/main" class="btn btn-dark">목록</a>
+					<c:if test="${ldto.users_id eq dto.users_id }">
+						<a href="/meeting/modify?meeting_number=${dto.meeting_number }" class="btn btn-dark">수정</a>
+						<a href="/meeting/delete?meeting_number=${dto.meeting_number }" class="btn btn-dark">삭제</a>
+					</c:if>
 				</td>
 				</tr>
 		</table>
