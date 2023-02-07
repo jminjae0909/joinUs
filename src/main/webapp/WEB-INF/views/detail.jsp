@@ -189,17 +189,18 @@ a{
 
 	<jsp:include page="head.jsp" />
 	
+	
 	<div class="container">		
 			<section>
 				<div id="detail_title">
-					${meetingdto.meeting_title}					
+					${dto.meeting_title}					
 				</div>
 				<div id="contents_usersDate">
 					<div id="contents_users">
-						${meetingdto.users_id}
+						${dto.users_id}
 					</div>
 					<div id="contents_date">
-						${meetingdto.meeting_insertdate}
+						${dto.meeting_insertdate}
 					</div>
 				</div>
 				<div id="detail_info">
@@ -207,10 +208,10 @@ a{
 						<li id="detail_meeting_1">						
 							<span id="meeting_categorty_title">모집 종류</span>
 							<span id="meeting_categorty_content">
-								<c:if test="${meetingdto.meeting_category eq 1 }">
+								<c:if test="${dto.meeting_category eq 1 }">
 									<c:out value="스터디" />
 								</c:if>
-								<c:if test="${meetingdto.meeting_category eq 0 }">
+								<c:if test="${dto.meeting_category eq 0 }">
 									<c:out value="프로젝트" />
 								</c:if>
 							
@@ -218,37 +219,38 @@ a{
 						</li>
 						<li id="detail_meeting_1">
 							<span id="meeting_onoff_title">진행 방식</span>
-							<span id="meeting_onoff_content">${meetingdto.meeting_onoff}</span>						
+							<span id="meeting_onoff_content">${dto.meeting_onoff}</span>						
 						</li>
 						<li id="detail_meeting_1">
 							<span id="meeting_membernum_title">모집 인원</span>
-							<span id="meeting_membernum_content">${meetingdto.meeting_membernum}명</span>						
+							<span id="meeting_membernum_content">${dto.meeting_membernum}명</span>						
 						</li>
 						<li id="detail_meeting_1">
 							<span id="meeting_startdate_title">시작 예정</span>
-							<span id="meeting_startdate_content">${meetingdto.meeting_startdate}</span>						
+							<span id="meeting_startdate_content">${dto.meeting_startdate}</span>						
 						</li>
 						<li id="detail_meeting_1">
 							<span id="meeting_contact_title">오픈 카톡</span>
-							<span id="meeting_contact_content">${meetingdto.meeting_contact}</span>						
+							<span id="meeting_contact_content">${dto.meeting_contact}</span>						
 						</li>
 						<li id="detail_meeting_1">
 							<span id="meeting_period_title">예상 기간</span>
-							<span id="meeting_period_content">${meetingdto.meeting_period}</span>						
+							<span id="meeting_period_content">${dto.meeting_period}</span>						
 						</li>
 						<li id="detail_meeting_1">
 							<span id="meeting_skill_title">사용 기술</span>
-							<span id="meeting_skill_content">${meetingdto.meeting_skill}</span>						
-						</li>						
+							<span id="meeting_skill_content">${dto.meeting_skill}</span>						
+						</li>
+						<li><a href="/makechatroom">채팅방으로</a></li>						
 					</ul>
 				</div>
-			</section>	
-					
+			</section>
+			
 			<div id="detail_content">
 				<h2 id="detail_content_title">프로젝트 소개</h2>
 			</div>
 			<div id="detail_content_info">
-				${meetingdto.meeting_contents}				
+				${dto.meeting_contents}				
 			</div>
 			<br />
 			<br />
@@ -256,11 +258,11 @@ a{
 			<br />
 			<div id="detail_map">
 				<h2 id="detail_map_title">모임장소</h2>			
-					<div id="detail_meeting_place">${meetingdto.meeting_place}</div>
+					<div id="detail_meeting_place">${dto.meeting_place}</div>
 					
 				<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 					<jsp:include page="../views/map.jsp">
-						<jsp:param value="${meetingdto.meeting_place }" name="place"/>
+						<jsp:param value="${dto.meeting_place }" name="place"/>
 					</jsp:include>
 				</div>
 			</div>
@@ -272,9 +274,11 @@ a{
 		<table class="table table-striped-columns">
 		<tr>
 				<td colspan="4">
-					<a href="main" class="btn btn-outline-primary">목록</a>
-					<a href="/meeting/modify?meeting_number=${meetingdto.meeting_number }" class="btn btn-outline-primary">수정</a>
-					<a href="/meeting/delete?meeting_number=${meetingdto.meeting_number }" class="btn btn-outline-primary">삭제</a>
+					<a href="/joinus/main" class="btn btn-dark">목록</a>
+					<c:if test="${ldto.users_id eq dto.users_id }">
+						<a href="/meeting/modify?meeting_number=${dto.meeting_number }" class="btn btn-dark">수정</a>
+						<a href="/meeting/delete?meeting_number=${dto.meeting_number }" class="btn btn-dark">삭제</a>
+					</c:if>
 				</td>
 				</tr>
 		</table>
