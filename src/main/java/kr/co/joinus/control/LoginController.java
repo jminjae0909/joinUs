@@ -40,11 +40,6 @@ public class LoginController {
 		}
 	}
 	
-//	@PostMapping("/loginOther")
-//	public String regist(@RequestParam("id") String id) {
-//		UsersDTO dto = service.getMemberByEmail(id)
-//	}
-	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

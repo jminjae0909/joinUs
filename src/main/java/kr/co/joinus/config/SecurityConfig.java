@@ -54,6 +54,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// 지정한 서블릿마다 접근권한을 다르게 주기
 		// public은 모든 사람이 접근 가능, member는 회원만, admin은 관리자만 접근 가능
 		// 작성 후 localhost로 들어갔을 때 member와 admin은 접근권한이 없어서 403에러가 뜬다
+		
+		//403 오류로 인해 csrf 해제
+		http.csrf().disable();
+		
 		http.authorizeHttpRequests()
 				.antMatchers("/logintest/member").authenticated() // authenticated: 인증이 된 사람만 들어오라하는 의미
 				.antMatchers("/logintest/admin").hasRole("ADMIN")

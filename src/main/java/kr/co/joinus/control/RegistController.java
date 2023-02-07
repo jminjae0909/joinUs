@@ -28,8 +28,13 @@ public class RegistController {
 	
 	@Autowired
 	UsersService service;
-
+	
 	@GetMapping("/regist")
+	public String registIm() {
+		return "regist/registForm";
+	}
+
+	@GetMapping("/registWithSns")
 	public String regist(HttpServletRequest req, Model model, HttpServletResponse resp) throws IOException {
 		String email = (String)req.getSession().getAttribute("email");
 		int idx = email.indexOf("@");
