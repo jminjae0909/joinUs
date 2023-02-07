@@ -22,7 +22,7 @@
 <!-- daum post cdn -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
-<body>
+<body id="body">
 
 <div class="container" id="container">
 	<div id="logo">
@@ -57,7 +57,6 @@
 		<!-- 일반 회원가입으로 진행하는 경우 -->
 		<c:if test="${emailId eq null && emailDomain eq null }">
 			<div class="input-group mb-3">
-				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
 				<input type="text" id="email1" name="email1" class="form-control" placeholder="이메일 아이디" aria-label="Username" >
 	  			<span class="input-group-text">@</span>
 	  			<input type="text" id="email2" name="email2" class="form-control" placeholder="이메일 주소" aria-label="Server" >
@@ -117,6 +116,6 @@
 		</div>
 	</form>
 </div>
-<body>
+</body>
 
 </html>

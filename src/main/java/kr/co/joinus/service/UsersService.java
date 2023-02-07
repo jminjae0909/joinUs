@@ -28,6 +28,10 @@ public class UsersService {
 		return dao.isExistId(id);
 	}
 	
+	public int isExistEmail(String email) {
+		return dao.isExistEmail(email);
+	}
+	
 	public void insertEmailOnly(UsersDTO dto) {
 		dao.insertEmailOnly(dto);
 	}
