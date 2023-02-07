@@ -33,7 +33,7 @@
 							<a href="/login" style="text-decoration: none;"><span>로그인</span></a>
 						</c:if>
 						<c:if test="${ldto.users_id ne null }">
-							<a href="#"><span>${ldto.users_nick}님, 환영합니다</span> <i class="bi bi-chevron-down"></i></a>
+							<a href="#" style="text-decoration: none;"><span>${ldto.users_nick}님, 환영합니다</span> <i class="bi bi-chevron-down"></i></a>
 							<ul>
 								<li><a href="#">마이페이지</a></li>
 								<li>
