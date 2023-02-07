@@ -190,6 +190,10 @@ $(function(){
 		window.open('https://www.mega-mgccoffee.com/');
 		
 	})
+	$("#main5").on("click" ,function(){
+		location.href = "/storehome";
+		
+	})
 	
 })
 
@@ -215,6 +219,13 @@ $(function(){
 					style="width: 100%" id="main1">
 				<div class="text">CODEE</div>
 			</div>
+			
+			<div class="mySlides fade">
+				<img
+					src="${path}/images/main5.png"
+					style="width: 100%" id="main5">
+				<div class="text">CODEE</div>
+			</div>
 
 			<div class="mySlides fade">
 				<img
@@ -230,12 +241,7 @@ $(function(){
 				<div class="text">CODEE</div>
 			</div>
 			
-			<div class="mySlides fade">
-				<img
-					src="${path}/images/main4.png"
-					style="width: 100%">
-				<div class="text">CODEE</div>
-			</div>
+
 
 			<!-- Next and previous buttons -->
 			<a class="prev" onclick="moveSlides(-1)">&#10094;</a> 
