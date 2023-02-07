@@ -6,15 +6,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CODEESTORE</title>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 <style type="text/css">
 	#storehome{
-		margin-top: 100px;
+		float: left;
 	}
+	
+	#data{
+		margin-left : 905px;
+		float: left;
+	}
+	
+	
 
 	#gostore{
 		margin: auto;
@@ -39,26 +47,53 @@
 	#services {
 		padding-top: 5px;
 	}
+	
 	* {
 	  margin: 0;
 	  padding: 0;
 	  box-sizing:border-box;
 	}
+	
 	.form-control{
 		width: 300px;
+	}
+	
+	.logo {
+	  font-size: 32px;
+	  margin-top: 130px;
+	  margin-left : 25px;
+	  padding: 0;
+	  line-height: 1;
+	  font-weight: 700;
+	  letter-spacing: 2px;
+	  text-transform: uppercase;
+	}
+	
+	.logo a {
+	  color: black;
+	}
+	
+	.logo a span {
+	  color: #ffc451;
 	}
 	
 </style>
 </head>
 <body>
+
 	<jsp:include page="head.jsp" />
 	
 	<div class="container">
+	
+		<h1 class="logo me-auto me-lg-0">
+				<a href="/storehome" style="text-decoration: none;">CODEE<span>.</span>STORE</a>
+			</h1>
+	
 		<div id=storehome>
 			<form action="/search" id="search">
        			<div>
-       			 <input class="form-control me-2" type="search" name="data" id="data" class="border-success" /> 
-       			 <input type="submit" class="btn btn-success" value="검색" id="searchbtn"/>	
+	       			 <input class="form-control me-2 border-success" type="search" name="data" id="data" /> 
+	       			 <input type="submit" class="btn btn-success" value="검색" id="searchbtn"/>	
        			</div> 
 			</form>
 			

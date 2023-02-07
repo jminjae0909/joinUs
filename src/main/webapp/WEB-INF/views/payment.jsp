@@ -11,7 +11,7 @@
 <style type="text/css">
 	.icon-box {
 		width: 800px;
-		height: 210px;
+		height: 370px;
 	}
 	 .icon-box {
 			border-radius: 2em;
@@ -24,7 +24,12 @@
 		text-align: center;
 	}
 	
-
+	#img{
+		margin-top : 0px;
+		width: 600px;
+		height: 300px;
+	
+	}
 </style>
 <head>
 <meta charset="UTF-8">
@@ -35,21 +40,10 @@
 	
 		<div id="payment">
 			<div class="icon-box">
-				<h2 class="title">구매 완료</h2>
-					<p> &nbsp;</p>
-					<p>~님 구매가 완료되었습니다.</p>
-					<p>현재 ~님의 잔여 커피콩은 ~ 개 입니다.</p>
+				
+					<p><img src="${path}/images/payment.png" id="img"/></p>
 					
-			
-				<%-- <c:forEach var="dto" items="${list}">
-					<h3 class="mt-0">${dto.users_id}님 구매가 완료되었습니다.</h3>
-					
-					<p>구매 번호 : ${dto.payment_number}</p>
-					<p>구매한 상품번호 : ${dto.store_number}</p>
-					<p>구매 날짜 : ${dto.payment_date}</p> --%>
-					
-					<a href="/index.html" class="btn btn-primary">홈으로 돌아가기</a>
-				<%-- </c:forEach> --%>
+					<a href="/joinus/main" class="btn btn-primary">홈으로 돌아가기</a>
 			</div>
 		
 	</div>
