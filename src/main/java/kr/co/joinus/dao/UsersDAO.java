@@ -13,5 +13,6 @@ public interface UsersDAO {
 	UsersDTO getMemberFindById(String id);
 	void insertOne(UsersDTO dto);
 	int isExistId(String id);
+	int isExistEmail(String email);
 	void insertEmailOnly(UsersDTO dto);
 }

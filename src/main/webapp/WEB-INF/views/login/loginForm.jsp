@@ -6,12 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>CODEE/로그인</title>
+<!-- jquery cdn -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
 <!-- bootstrap cdn -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 <!-- css -->
 <link rel="stylesheet" href="../Resources/css/loginForm.css">
+
+<!-- js -->
+<script src="../Resources/js/loginForm.js"></script>
 
 </head>
 <body id="body">
@@ -30,7 +36,7 @@
   			<button id="loginBtn" class="btn btn-warning btn-lg" type="submit">로그인</button>
 		</div>
 	</form>
-		<span><a id="re" href="">비밀번호 재설정</a></span>
+		<span><a id="re" href="/searchIdPw">아이디/비밀번호 찾기</a></span>
 		<span><a id="re" href="/regist">회원가입</a></span>
 		
 		<div id="msg">SNS계정으로 간편하게 로그인/회원가입</div>

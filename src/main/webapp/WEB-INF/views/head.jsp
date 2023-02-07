@@ -21,10 +21,10 @@
 
 
 					<li>
-						<c:if test="${dto.users_id eq null }">
+						<c:if test="${ldto.users_id eq null }">
 							<a class="nav-link scrollto" href="/login">새글 쓰기</a>
 						</c:if>
-						<c:if test="${dto.users_id ne null }">	
+						<c:if test="${ldto.users_id ne null }">	
 							<a class="nav-link scrollto" href="/meeting/write">새글 쓰기</a>
 						</c:if>	
 					</li>

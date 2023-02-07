@@ -1,0 +1,15 @@
+div#container{
+	position: relative;
+	top: 30%;
+	text-align: center;
+	width: 350px;
+}
+
+img{
+	width: 80px;
+	margin: 20px 0px;
+}
+
+div.mb-3{
+	margin: 20px 0px;
+}

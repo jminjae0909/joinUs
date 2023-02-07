@@ -22,21 +22,38 @@ $(function() {
 
 	/*이메일 인증 버튼 눌렀을 때 이벤트*/
 	$("#checkEmail").click(function() {
+		//이메일 안 쓴 경우
 		if($("#email1").val == "" || $("#email2").val() == ""){
 			alert('이메일을 입력해주세요');
 			return false;
 		}
 		
+		//해당 이메일이 존재하는지 검증
 		$.ajax({
-			type: "POST",
-			url: "login/mailConfirm",
-			data: {
-				"email": $("#email1").val() + "@" + $("#email2").val().trim()
-			},
+			type: "GET",
+			url: "/isExistEmail",
+			data: { "users_email": $("#email1").val() + "@" + $("#email2").val().trim() },
 			success: function(data) {
-				alert("해당 이메일로 인증번호 발송이 완료되었습니다.");
-				console.log("data : " + data);
-				chkEmailConfirm(data, $("#memailconfirm"), $("#memailconfirmTxt"));
+				console.log(data);
+				if (data == 1) {
+					alert("이미 가입된 이메일입니다.");
+					return false;
+				} else{
+							
+					//인증메일 보내기
+					$.ajax({
+						type: "POST",
+						url: "login/mailConfirm",
+						data: {
+							"email": $("#email1").val() + "@" + $("#email2").val().trim()
+						},
+						success: function(data) {
+							alert("해당 이메일로 인증번호 발송이 완료되었습니다.");
+							console.log("data : " + data);
+							chkEmailConfirm(data, $("#memailconfirm"), $("#memailconfirmTxt"));
+						}
+					})
+				}
 			}
 		})
 	})

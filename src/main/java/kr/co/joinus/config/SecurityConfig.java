@@ -59,8 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		
 		http.authorizeHttpRequests()
-				.antMatchers("/logintest/member").authenticated() // authenticated: 인증이 된 사람만 들어오라하는 의미
-				.antMatchers("/logintest/admin").hasRole("ADMIN")
+				.antMatchers("/admin").hasRole("ADMIN")
 				
 				.antMatchers("/joinus/**").permitAll()
 				.antMatchers("/meeting/**").permitAll()
@@ -74,9 +73,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.userService(userDetailService); // 이렇게 설정하고 싶다(userDetailService클래스에서 설정한 값을 실행함) 
 				
 	}
-
-	//메서드 실행하면 CustomerLoginSuccessHandler클래스로 이동
-//	private AuthenticationSuccessHandler successHandler() {
-//		return new CustomerLoginSuccessHandler();
-//	}
 }
