@@ -240,8 +240,7 @@ a{
 						<li id="detail_meeting_1">
 							<span id="meeting_skill_title">사용 기술</span>
 							<span id="meeting_skill_content">${dto.meeting_skill}</span>						
-						</li>
-						<li><a href="/makechatroom">채팅방으로</a></li>						
+						</li>				
 					</ul>
 				</div>
 			</section>
