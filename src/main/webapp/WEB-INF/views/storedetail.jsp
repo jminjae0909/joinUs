@@ -18,7 +18,7 @@
 
 <style type="text/css">
 	#storedetail{
-		margin-top: 150px;
+		margin-top: 50px;
 	}
 	.icon-box {
 		border-radius: 2em;
@@ -37,17 +37,37 @@
 		border-top: 2px solid #d1d1d1;
 		padding: 25px 0px 0px 0px;
 	}
+	.logo {
+	  font-size: 32px;
+	  margin-top: 130px;
+	  margin-left : 15px;
+	  padding: 0;
+	  line-height: 1;
+	  font-weight: 700;
+	  letter-spacing: 2px;
+	  text-transform: uppercase;
+	}
 	
+	.logo a {
+	  color: black;
+	}
+	
+	.logo a span {
+	  color: #ffc451;
+	}
 </style>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CODEESTORE</title>
 </head>
 <body>
 	<jsp:include page="head.jsp" />
 		
-		<div id="storedetail">
 			<div class="container">
+					<h1 class="logo me-auto me-lg-0">
+				<a href="/storehome" style="text-decoration: none;">CODEE<span>.</span>STORE</a>
+			</h1>
+		<div id="storedetail">
 			
 				<div class="icon-box">
 				<div class="row g-0  position-relative" id="detailimage" >
@@ -70,7 +90,7 @@
 						</select>&nbsp;개
 						<button type="button" class="btn btn-primary" data-bs-toggle="modal"
 							data-bs-target="#staticBackdrop" id="payment">구매하기</button>
-						<a href="/home"><button type="button" class="btn btn-success">목록보기</button></a>
+						<a href="/storehome"><button type="button" class="btn btn-success">목록보기</button></a>
 						</p>
 					</div>
 				</div>
