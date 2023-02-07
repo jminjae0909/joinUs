@@ -92,8 +92,6 @@ public class MainController {
 		List<MeetingDTO> list = service.getSkill(skill);
 		
 		model.addAttribute("list", list);
-				
-		System.out.println(list);
 		
 		return "main";
 	}

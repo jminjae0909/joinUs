@@ -24,6 +24,11 @@
 		WHERE users_id = #{users_id}
 	</select>
 	
+	<select id="isExistEmail" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM users
+		WHERE users_email = #{users_email}
+	</select>
+	
 	<insert id="insertEmailOnly" parameterType="UsersDTO">
 		INSERT INTO users (users_email)
 		VALUES (#{users_email})

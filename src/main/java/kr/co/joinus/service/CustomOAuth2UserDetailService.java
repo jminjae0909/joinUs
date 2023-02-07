@@ -95,15 +95,13 @@ public class CustomOAuth2UserDetailService extends DefaultOAuth2UserService {
 			req.getSession().setAttribute("email", email);
 
 			try {
-				PrintWriter out = resp.getWriter();
-
 				resp.sendRedirect("/registWithSns");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
-			req.getSession().setAttribute("dto", dto);
+			req.getSession().setAttribute("ldto", dto);
 			try {
 				resp.sendRedirect("/joinus/main");
 			} catch (IOException e) {

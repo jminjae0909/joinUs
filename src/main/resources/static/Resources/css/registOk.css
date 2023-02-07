@@ -1,0 +1,14 @@
+div#container{
+	text-align: center;
+	position: relative;
+	top: 30%;
+}
+
+img{
+	width: 200px;
+	margin-bottom: 20px;
+}
+
+div#congmsg{
+	margin: 30px 0px;
+}

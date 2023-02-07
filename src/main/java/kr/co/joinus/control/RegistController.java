@@ -1,7 +1,6 @@
 package kr.co.joinus.control;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,9 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.joinus.dto.UsersDTO;
 import kr.co.joinus.service.UsersService;
@@ -65,7 +61,7 @@ public class RegistController {
 		String users_addrs = address+" "+addrsDetail;
 		dto.setUsers_addrs(users_addrs);
 		dto.setUsers_email(users_email);
-		service.insertOne(dto);
+		//service.insertOne(dto);
 		log.info("dto: {}", dto);
 		return "regist/registOk";
 	}

@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class PaymentDTO {
 	//뷰로 전달받을 값 
-	private String users_id;
+	private String users_nick;
 	private int store_number;
 	
 	//db로 꺼내올 값

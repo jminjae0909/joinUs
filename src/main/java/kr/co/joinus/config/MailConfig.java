@@ -11,7 +11,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 public class MailConfig {
 	
 	@Bean
-	public JavaMailSender naverMailService() {
+	JavaMailSender naverMailService() {
 		JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
 		
 		javaMailSender.setHost("smtp.naver.com"); //메인 도메인 서버 주소(smtp서버 주소)

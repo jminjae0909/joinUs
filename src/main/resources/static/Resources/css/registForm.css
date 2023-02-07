@@ -1,5 +1,5 @@
 
-body{
+body#body{
 	background-color: #FAFAFA;
 }
 
@@ -8,7 +8,7 @@ span#yellow{
 }
 
 div.container{
-	width: 500px;
+	width: 400px;
 }
 
 a#main{
