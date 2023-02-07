@@ -85,4 +85,16 @@ public class MainController {
 		return "detail";
 		
 	}
+	
+	@GetMapping("/skill")
+	public String Meetinglist(@RequestParam("skill")String skill, Model model) {
+				
+		List<MeetingDTO> list = service.getSkill(skill);
+		
+		model.addAttribute("list", list);
+				
+		System.out.println(list);
+		
+		return "main";
+	}
 }

@@ -116,6 +116,65 @@ label {
 	font-size: 25px;
 	font-weight: bold;
 }
+.skill_category_ul{
+	display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    grid-gap: 15px;
+    gap: 15px;
+    margin-top: 50px;
+}
+.skill_category_li{
+	margin-left: 30px;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.w-btn-outline {
+    position: relative;
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.w-btn-gray-outline {
+    border: 2px solid #ebebeb;
+    color: #444444;
+}
+
+.w-btn-gray-outline:hover {
+    background-color: #ebebeb;
+    color: #e3dede;
+}
+.skill_filter{
+	display: flex;
+    grid-gap: 50px;
+    gap: 50px;
+    border-bottom: 3px solid #f2f2f2;
+    padding-bottom: 20px;
+    padding-left: 16px;
+    margin-bottom: 30px;
+}
+.skill_filter_all a{
+	display: flex;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 126.5%;
+    color: #444444;
+    cursor: pointer;
+    position: relative;
+}
+
+
+
 </style>
 
 <script type="text/javascript">
@@ -185,6 +244,30 @@ label {
 	
 	<main id="main">
 		<jsp:include page="AD.jsp" />
+		
+		<section>
+		<div class="container">
+			<div id="skill_category">
+				<form action="skill" method="GET">
+					<ul class="skill_filter">
+						<li class="skill_filter_all"><a href="/joinus/main">전체 보기</a></li>				
+					</ul>
+					<ul class="skill_category_ul">
+						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="java"/></li>
+						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="Spring" /></li>
+ 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="Nodejs" /></li>					
+ 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="Kotlin" /></li>						
+ 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="TypeScript" /></li>						
+ 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="React" /></li>						
+ 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="Vue" /></li>						
+ 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="MySQL" /></li>						
+ 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="Python" /></li>						
+ 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="php" /></li>										
+					</ul>
+				</form>							
+			</div>	
+		</div>
+		</section>
 
 		<!-- ======= Breadcrumbs ======= -->
 		<section class="breadcrumbs">
@@ -215,7 +298,7 @@ label {
 			</div>
 		</section>
 		<!-- End Breadcrumbs -->
-
+										
 		<section id="services" class="services">
 			<div class="container aos-init aos-animate" data-aos="fade-up">
 				<div class="row" id="list">
