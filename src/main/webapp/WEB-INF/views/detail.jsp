@@ -182,6 +182,25 @@ a{
 	text-decoration: none;
 }
 
+ul{
+   list-style:none;
+}
+#favorites_li{
+	display: flex;
+    position: relative;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 700px;
+}
+
+#favorites_add_btn{
+	border-radius: 50%;
+}
+
+#favorites_delete_btn{
+	border-radius: 50%;
+}
 
 
 </style>
@@ -201,6 +220,30 @@ a{
 					</div>
 					<div id="contents_date">
 						${dto.meeting_insertdate}
+					</div>
+					
+				<div id="contents_favorites">
+					<ul id="favorites_ul">
+						<li id="favorites_li">
+							<form action="favorites_add" method="post">
+								<c:if test="${ldto.users_id ne dto2.users_id}">
+								<input type="submit" value="❤️" class="btn btn-outline-danger" id="favorites_add_btn"/>
+								<input type="hidden" name="meeting_number" value="${dto.meeting_number }" />
+								<input type="hidden" name="users_id" value="${ldto.users_id }" />							
+								</c:if>
+							</form>
+							
+							<form action="favorites_delete" method="Get">
+								<c:if test="${ldto.users_id eq dto2.users_id and ldto.users_id ne null}">
+								<input type="submit" value="🤍" class="btn btn-danger" id="favorites_delete_btn" />
+								<input type="hidden" name="meeting_number" value="${dto.meeting_number }" />
+								<input type="hidden" name="users_id" value="${ldto.users_id }" />
+								</c:if>
+							</form>						
+						</li>
+					</ul>
+															 	
+					 	
 					</div>
 				</div>
 				<div id="detail_info">

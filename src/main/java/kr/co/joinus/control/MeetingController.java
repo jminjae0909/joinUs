@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.joinus.dto.CommentsDTO;
+import kr.co.joinus.dto.FavoritesDTO;
 import kr.co.joinus.dto.MeetingDTO;
 import kr.co.joinus.dto.UsersDTO;
 import kr.co.joinus.service.CommentsService;
+import kr.co.joinus.service.FavoritesService;
 import kr.co.joinus.service.MeetingService;
 import kr.co.joinus.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +40,9 @@ public class MeetingController {
 	@Autowired
 	UsersService usersservice;
 	
+	@Autowired
+	FavoritesService favoritesService;
+	
 	@GetMapping("/write")
 	public String wirteForm() {
 
@@ -54,7 +59,7 @@ public class MeetingController {
 		
 		UsersDTO usersdto = usersservice.getMemberFindById(id);
 		
-		session.setAttribute("dto", usersdto);
+		session.setAttribute("dto", usersdto);		
 		
 		//미팅 등록
 		service.add(dto);		
@@ -63,14 +68,19 @@ public class MeetingController {
 	}	
 	
 	@GetMapping("/detail")
-	public String detail(@RequestParam("meeting_number")int meeting_number, Model model) {
+	public String detail(@RequestParam("meeting_number")int meeting_number,Model model,
+						@RequestParam("users_id")String users_id) {
 				
 		MeetingDTO dto = service.selectOne(meeting_number);
+		
+		FavoritesDTO dto2 = favoritesService.selectOne(meeting_number,users_id);
 		
 		List<CommentsDTO> list = commentsservice.selectList(meeting_number);
 		
 		model.addAttribute("dto", dto);
 		model.addAttribute("list", list);
+		model.addAttribute("dto2", dto2);
+		
 		
 		return "detail";
 	}
