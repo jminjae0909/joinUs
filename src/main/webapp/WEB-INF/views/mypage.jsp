@@ -50,9 +50,9 @@ ul.tabs li.current {
 	display: inherit;
 }
 
-#tab-4 {
-	padding-top: 3%;
-	padding-left: 5%;
+#tab-5 {
+	padding-top: 5%;
+	padding-left: 8%;
 }
 
 h6 {
@@ -83,18 +83,10 @@ h6 {
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	
+
 	$(function() {
 
-		$.ajax({
-			url : "/joinus/mypageMeetingList",
-			type : "GET",
-			data : { "cp" : 1, "users_id" : "${ldto.users_id}" } 
-
-		}).done(function(data) {
-			$(".margind1").empty();
-			$(".margind1").replaceWith(data);
-		});
+		mypageMeetingList(1);
 		
 		$('ul.tabs li').click(function() {
 			
@@ -109,8 +101,8 @@ h6 {
 			$("#" + tab_id).addClass('current');
 
 			if(tab_id == 'tab-2') {
-				console.log('2번입니다.');
-
+				
+				mypageFavoritesList(1)
 			}
 			
 			if(tab_id == 'tab-3') {
@@ -118,33 +110,59 @@ h6 {
 			}
 
 		});
-		
-
-		$("#btn1").on("click", function() {
-
-			var pw = $("#pw").val();
-			var pwok = $("#pwok").val();
-			if (pw == pwok) {
-				frm.action = "updateClient.jsp";
-				frm.method = "get";
-				frm.submit();
-
-			}
-		});
 
 	});
 	
-	function page(cp) {
-	
+	function mypageMeetingList(mcp) {
+		
 		$.ajax({
 			url : "/joinus/mypageMeetingList",
 			type : "GET",
-			data : { "cp" : cp, "users_id" : "${ldto.users_id}" } 
+			data : { "cp" : mcp, "users_id" : "${ldto.users_id}" } 
 
 		}).done(function(data) {
 			$(".margind1").empty();
 			$(".margind1").replaceWith(data);
-			console.log(data);
+		});
+	}
+	
+	function mypageFavoritesList(fcp) {
+		
+		$.ajax({
+			url : "/joinus/mypageFavoritesList",
+			type : "GET",
+			data : { "cp" : fcp, "users_id" : "${ldto.users_id}" } 
+
+		}).done(function(data) {
+			$(".margind2").empty();
+			$(".margind2").replaceWith(data);
+		});
+	}
+	
+	function page(cp) {
+		
+		mypageMeetingList(cp);
+	}
+	
+	var fpage = 1;
+	
+	function fav_page(cp) {
+		if(cp < 0) { cp = 1 }
+		fpage = cp;
+		
+		mypageFavoritesList(cp);
+	}
+	
+	function deleteOne(num) {
+		
+		$.ajax({
+			url : "/joinus/mypageFavoritesDelete",
+			type : "GET",
+			data : { "favorites_number" : num } 
+
+		}).done(function(data) {
+			
+			mypageFavoritesList(fpage);
 			
 		});
 	}
@@ -160,7 +178,8 @@ h6 {
 			<li class="tab-link current" data-tab="tab-1">나의모임글조회</li>
 			<li class="tab-link" data-tab="tab-2">관심목록조회</li>
 			<li class="tab-link" data-tab="tab-3">나의후기조회</li>
-			<li class="tab-link" data-tab="tab-4">회원정보수정</li>
+			<li class="tab-link" data-tab="tab-4">나의커피콩</li>
+			<li class="tab-link" data-tab="tab-5">회원정보수정</li>
 		</ul>
 
 		<div id="tab-1" class="tab-content current ">
@@ -168,24 +187,20 @@ h6 {
 		</div>
 		
 		<div id="tab-2" class="tab-content">
-			<jsp:include page="../views/mypage/interests_list.jsp" />
+			<div class="margind2" ></div>
 		</div>
 		
 		<div id="tab-3" class="tab-content">
-			<jsp:include page="../views/mypage/review_list.jsp" />
+			<div class="margind3" ></div>
 		</div>
 		
 		<div id="tab-4" class="tab-content">
+			<div class="margind4" ></div>
+		</div>
+		
+		<div id="tab-5" class="tab-content">
 
-			<form action="modify.jsp" name="frm">
-				<h6>비밀번호를 다시한번 입력해주세요.</h6>
-				<p>
-					<input type="password" name="pw" id="pw" /> <input type="hidden"
-						name="pwok" id="pwok" value="" /> <input type="submit" value="확인"
-						id="btn13" class="btn btn-outline-success" />
-
-				</p>
-			</form>
+			
 		</div>
 	</div>
 </body>

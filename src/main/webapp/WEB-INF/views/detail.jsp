@@ -277,6 +277,7 @@ a{
 					<c:if test="${ldto.users_id eq dto.users_id }">
 						<a href="/meeting/modify?meeting_number=${dto.meeting_number }" class="btn btn-dark">수정</a>
 						<a href="/meeting/delete?meeting_number=${dto.meeting_number }" class="btn btn-dark">삭제</a>
+						<a href="/joinus/reviewsWrite?meeting_number=${dto.meeting_number }" class="btn btn-dark">후기작성</a>
 					</c:if>
 				</td>
 				</tr>

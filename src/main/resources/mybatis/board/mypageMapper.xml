@@ -12,10 +12,33 @@
 		ORDER BY meeting_number desc limit #{startNo}, 10;
 	</select>
 	
-	<select id="getTotal" parameterType="String" resultType="int">
+	<select id="getMeetingTotal" parameterType="String" resultType="int">
 		SELECT COUNT(*)
 		FROM meeting
 		WHERE users_id = #{users_id}
 	</select>
+	
+	<select id="mypageFavorites" parameterType="StartEnd" resultType="FavoritesDTO">
+		SELECT favorites_number, users_id,  favorites_date,  meeting_number, meeting_title
+		FROM favorites NATURAL JOIN meeting
+		WHERE users_id = #{users_id}
+		ORDER BY favorites_number desc limit #{startNo}, 10;
+	</select>
+	
+	<select id="getFavoritesTotal" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM favorites
+		WHERE users_id = #{users_id}
+	</select>
+	
+	<delete id="deleteOne" parameterType="int">
+		DELETE FROM favorites
+		WHERE favorites_number = #{favorites_number} 
+	</delete>
+	
+	<insert id="addReivews" parameterType="ReviewsDTO">
+		INSERT INTO meeting_reviews	
+		VALUES (null, #{users_id}, #{meeting_number}, #{reviews_contents}, #{reviews_evaluation}, sysdate(), #{reviews_title} )
+	</insert>
 
 </mapper>

@@ -1,108 +1,69 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.time.Duration"%>
-<%@page import="java.util.Calendar"%>
-<%@page import="java.util.Date"%>
-
-<%@page import="java.util.ArrayList"%>
-
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-	crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+
 <style>
-a {
-	text-decoration: none;
-	color: black;
+
+.btnref {
+	float: right;
 }
 
-#btn1 {
-	margin-left: 88%;
-}
-
-textarea {
+table {
 	width: 100%;
 }
+
+.tablehd {
+	background: #ffc45199;
+}
+
 </style>
-<!-- --------header  -------- -->
-<link rel="stylesheet" href="../css/main.css" />
-
-<!-- 수정된 부분 -->
-<link href="../Resources/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="../Resources/vendor/bootstrap-icons/bootstrap-icons.css"
-	rel="stylesheet">
-<link href="../Resources/vendor/aos/aos.css" rel="stylesheet">
-<link href="../Resources/vendor/glightbox/css/glightbox.min.css"
-	rel="stylesheet">
-<link href="../Resources/vendor/swiper/swiper-bundle.min.css"
-	rel="stylesheet">
-<!-- Template Main CSS File -->
-<link href="../Resources/css/main.css" rel="stylesheet">
-<!-- Vendor JS Files -->
-<script src="../Resources/js/bootstrap.bundle.js"></script>
-<script src="../Resources/vendor/aos/aos.js"></script>
-<script src="../Resources/vendor/glightbox/js/glightbox.min.js"></script>
-<script src="../Resources/vendor/purecounter/purecounter_vanilla.js"></script>
-<script src="../Resources/vendor/swiper/swiper-bundle.min.js"></script>
-<script src="../Resources/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-<script src="../Resources/vendor/php-email-form/validate.js"></script>
-<link rel="stylesheet" href="../css/main.css" />
-<!-- ------------------------------------------- -->
-
 </head>
 <body>
-
-	<form action="../refund/adminRefundOk.jsp">
-		<div class="margind">
-
-			<table class="table table-hover">
-				<thead class="table-success">
-					<tr align="center">
-						<td></td>
-						<td>글번호</td>
-						<td>제목</td>
-						<td>후기평가</td>
-						<td>작성일</td>
-					</tr>
-				</thead>
-
-				<tr>
-					<td><input type='checkbox' name="resno" id="resno" value=""
-						class="checkSelect"></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td colspan="4"></td>
-				</tr>
-
-			</table>
-
-
-			<input type="submit" value="삭제" onclick="checkForm(this);"
-				id="btn1" class="btn btn-outline-success" />
-
-		</div>
-	</form>
-
-	<script>
-		
-	</script>
+	<div class="margind1">
+		<table class="table table-hover">
+			<tr class="tablehd">
+				<th>게시물번호</th>
+				<th>제목</th>
+				<th>작성일</th>
+				<th>시작 예정일</th>
+				<th>조회수</th>
+			</tr>
+			<c:forEach var="dto" items="${mypageList }">
+			<tr onClick="location.href='/meeting/detail?meeting_number=${dto.meeting_number }'"> 
+				<td align="center">${dto.meeting_number }</td>
+				<td align="center">${dto.meeting_title }</td>
+				<td align="center">${dto.meeting_insertdate }</td>
+				<td align="center">${dto.meeting_startdate }</td>
+				<td align="center">${dto.meeting_hits }</td>
+			</tr>
+			</c:forEach>
+			
+			<tr>
+				<td colspan="5" >
+					<nav aria-label="Page navigation example" >
+						<ul class="pagination justify-content-center">
+							<c:if test="${mypageMap.isPre }">
+						    	<li class="page-item"><a class="page-link" onclick="page(${map.currentPage-5 })">Previous</a></li>
+						    </c:if>
+						    <c:forEach var="i" begin="${mypageMap.startPage }" end="${mypageMap.endPage }">
+						    	<li class="page-item"><a class="page-link" onclick="page(${i})">${i }</a></li>
+						    </c:forEach>
+						    <c:if test="${mypageMap.isNext }">
+								<li class="page-item"><a class="page-link" onclick="page(${map.currentPage+5 })">Next</a></li>
+							</c:if>
+						</ul>
+					</nav>
+				</td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>
