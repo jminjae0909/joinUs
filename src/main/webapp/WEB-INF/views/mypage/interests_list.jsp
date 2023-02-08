@@ -6,20 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-.tablehd {
-	background: rgb(209, 231, 221);
-	text-align: center;
-}
 
-.btnref {
-	float: right;
-}
-
-img#x {
-	width: 20px;
-}
-</style>
 </head>
 <div class="margind">
 	<table class="table table-hover">

@@ -16,10 +16,16 @@ public class PageUtil {
 		int endNo = currentPage * recordPerPage;
 
 		int startPage = 1;
-		int endPage = totalPage;
-
+		int endPage = 0;
+		
+		// 전체 목록 수가 10 이하이면 페이지는 1페이지로 조정
+		if(totalCount < 10) {
+			endPage = 1;
+		}else {
+			endPage = totalPage;
+		}
+		
 		// 시작페이지 미세조정
-
 		if (currentPage <= 5) {
 			startPage = 1;
 		} else if (currentPage >= 6) {

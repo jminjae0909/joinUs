@@ -173,6 +173,12 @@ ul {
     position: relative;
 }
 
+.studyItem_title {
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
 
 
 </style>
@@ -208,10 +214,6 @@ ul {
 				$("#list").empty();
 				$("#list").replaceWith(data);
 			});
-
-			if (!$(".cbox").is(':checked')) {
-				$("#current_state").innerText("text");
-			}
 		});
 
 		$(".form-select").change(function() {
@@ -310,12 +312,11 @@ ul {
 								<div class="icon-box">
 
 									<div class="studyItem_schedule">
-										<p class="startedate">시작 예정일 |
-											${dto.meeting_startdate }</p>
+										<p class="startedate">시작 예정일 | ${dto.meeting_startdate }</p>
 									</div>
 									<h4 class="studyItem_title">${dto.meeting_title }</h4>
-									<p class="studyItem_place">${dto.meeting_place }</p>
-
+									<p class="studyItem_place">${dto.meeting_skill }</p>
+									
 									<div class="studyItem_info">
 										<p class="">
 											<img src="" alt="" />작성자 : ${dto.users_id }
