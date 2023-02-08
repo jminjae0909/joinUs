@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.joinus.dto.UsersDTO;
+import kr.co.joinus.service.AttendanceService;
 import kr.co.joinus.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,6 +28,9 @@ public class LoginController {
 	
 	@Autowired
 	UsersService service;
+	
+	@Autowired
+	AttendanceService service2;
 
 	@GetMapping("/login")
 	public String login() {
@@ -44,6 +48,12 @@ public class LoginController {
 			return "regist/registForm";
 		}else {
 			session.setAttribute("ldto", dto);
+			
+			if(service2.getOneAttend(id) == null) {
+				service2.addAttend(id);
+				service2.waterUpdate(id);	
+			}
+			
 			return "main";
 		}
 	}

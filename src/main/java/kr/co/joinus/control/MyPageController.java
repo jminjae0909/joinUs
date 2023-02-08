@@ -124,4 +124,11 @@ public class MyPageController {
 				
 		return "redirect:/joinus/main";		
 	}
+	
+	@GetMapping("/mypageBeen")
+	public String been(@RequestParam(name = "cp", defaultValue = "1")int currentPage, 
+			@RequestParam("users_id")String users_id) {
+		System.out.println("users_id : " + users_id);
+		return "/mypage/myBeen";
+	}
 }

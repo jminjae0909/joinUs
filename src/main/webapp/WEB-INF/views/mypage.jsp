@@ -108,6 +108,11 @@ h6 {
 			if(tab_id == 'tab-3') {
 				console.log('3번입니다.');
 			}
+			
+			if(tab_id == 'tab-4') {
+				console.log('4번입니다.');
+				mypageBeen(1);
+			}
 
 		});
 
@@ -136,6 +141,19 @@ h6 {
 		}).done(function(data) {
 			$(".margind2").empty();
 			$(".margind2").replaceWith(data);
+		});
+	}
+	
+	function mypageBeen(bcp) {
+		
+		$.ajax({
+			url : "/joinus/mypageBeen",
+			type : "GET",
+			data : { "cp" : bcp, "users_id" : "${ldto.users_id}" } 
+
+		}).done(function(data) {
+			$(".margind4").empty();
+			$(".margind4").replaceWith(data);
 		});
 	}
 	
