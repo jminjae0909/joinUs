@@ -22,7 +22,7 @@ public class AccountController {
 	String mailConfirm(@RequestParam("email") String email) throws Exception {
 		
 		String code = registerMail.sendSimpleMessage(email);
-		log.info("인증번호: "+code);
+		log.info("인증번호: {}", code);
 		return code;
 	}
 }
