@@ -25,5 +25,9 @@ public class FavoritesService {
 	public void deleteOne(int meeting_number, String users_id) {
 		dao.deleteOne(meeting_number, users_id);
 	}
+	
+	public void deleteOne2(int meeting_number) {
+		dao.deleteOne2(meeting_number);
+	}
 
 }

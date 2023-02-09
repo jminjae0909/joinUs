@@ -77,9 +77,12 @@ public class MeetingController {
 		
 		List<CommentsDTO> list = commentsservice.selectList(meeting_number);
 		
+		List<MeetingDTO> list2 = service.getHitsAll();
+		
 		model.addAttribute("dto", dto);
 		model.addAttribute("list", list);
 		model.addAttribute("dto2", dto2);
+		model.addAttribute("list2", list2);
 		
 		
 		return "detail";
@@ -108,6 +111,8 @@ public class MeetingController {
 	
 	@GetMapping("/delete")
 	public String delete(@RequestParam("meeting_number")int meeting_number) {
+		
+		favoritesService.deleteOne2(meeting_number);
 		commentsservice.deletemnum(meeting_number);
 		service.deleteOne(meeting_number);
 		return "redirect:/joinus/main";

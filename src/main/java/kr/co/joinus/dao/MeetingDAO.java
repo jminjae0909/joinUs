@@ -27,4 +27,6 @@ public interface MeetingDAO {
 	int getTotal();
 	
 	List<MeetingDTO> getSkill(String skill);
+	
+	List<MeetingDTO> getHitsAll();
 }
