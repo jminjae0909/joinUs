@@ -36,7 +36,6 @@ public class RegistController {
 		int idx = email.indexOf("@");
 		String emailId = email.substring(0, idx);
 		String emailDomain = email.substring(idx+1);
-		System.out.println("이메일 확인: "+email);
 		model.addAttribute("emailId", emailId);
 		model.addAttribute("emailDomain", emailDomain);
 		return "regist/registForm";

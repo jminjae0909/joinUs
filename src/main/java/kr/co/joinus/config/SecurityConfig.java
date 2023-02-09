@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import kr.co.joinus.service.CustomOAuth2UserDetailService;
 
@@ -38,7 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// 패스워드: aaa 로 설정
 
 		// db에 저장한 유저정보로 로그인하기 설정
-		// as: 별칭주는거임. springboot security에선 별칭처럼 이름을 쓰는데 이거때문에 테이블 컬럼명을 바꿀수 없으니까 별칭을 줘서 대응하는거임.
+		// as: 별칭주는거임. springboot security에선 별칭처럼 이름을 쓰는데 이거때문에 테이블 컬럼명을 바꿀수 없으니까 별칭을 줘서
+		// 대응하는거임.
 		final String usernameQuery = "SELECT users_id as username, users_pwd as password FROM users WHERE users_id = ? ";
 		// users 테이블의 id와 users_role테이블의 id를 비교하여 그 id의 권한이 어떤지 확인하기(인가를 주기 위함)
 		final String authQuery = "SELECT users_id as username, users_role as authority FROM users WHERE users_id = ? ";
@@ -54,23 +54,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// 지정한 서블릿마다 접근권한을 다르게 주기
 		// public은 모든 사람이 접근 가능, member는 회원만, admin은 관리자만 접근 가능
 		// 작성 후 localhost로 들어갔을 때 member와 admin은 접근권한이 없어서 403에러가 뜬다
-		
-		//403 오류로 인해 csrf 해제
+
+		// 403 오류로 인해 csrf 해제
 		http.csrf().disable();
-		
+
 		http.authorizeHttpRequests()
-				.antMatchers("/admin").hasRole("ADMIN")
-				
-				.antMatchers("/joinus/**").permitAll()
-				.antMatchers("/meeting/**").permitAll()
-				
-				.antMatchers("/regist")
-				.permitAll()
-				.and()
-				
-				.oauth2Login().loginPage("/login")  // sns로그인 가능하게 하되 커스텀 로그인 페이지로 가도록 하기
-				.userInfoEndpoint() // 소셜 로그인 인증 후 얻어지는 사용자 정보를
-				.userService(userDetailService); // 이렇게 설정하고 싶다(userDetailService클래스에서 설정한 값을 실행함) 
-				
+		
+			.antMatchers("/admin").hasRole("ADMIN")
+
+			.antMatchers("/joinus/**").permitAll()
+			.antMatchers("/meeting/**").permitAll()
+
+			.antMatchers("/regist").permitAll()
+			.and()
+			
+			.oauth2Login().loginPage("/login") // sns로그인 가능하게 하되 커스텀 로그인 페이지로 가도록 하기
+			.userInfoEndpoint() // 소셜 로그인 인증 후 얻어지는 사용자 정보를
+			.userService(userDetailService); // 이렇게 설정하고 싶다(userDetailService클래스에서 설정한 값을 실행함)
+
 	}
 }
