@@ -2,6 +2,7 @@ package kr.co.joinus.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -88,11 +89,16 @@ public class CustomOAuth2UserDetailService extends DefaultOAuth2UserService {
 		}
 
 		// 해당 email이 db에 있는지 확인 후
-		UsersDTO dto = service.getMemberByEmail(email);
+		UsersDTO dto = service.getMemberByEmailAndSns(email, clientName);
+		
+		log.info("이메일 존재함?: {}", dto);
 
-		// 없으면 세션에 넣어 email을 registForm으로 전송하기
+		// 없으면 세션에 넣어 email과 sns종류를 registForm으로 전송하기
 		if (dto == null) {
-			req.getSession().setAttribute("email", email);
+			Map<String, String> registSns = new HashMap<>();
+			registSns.put("email", email);
+			registSns.put("clientName", clientName);
+			req.getSession().setAttribute("registSns", registSns);
 
 			try {
 				resp.sendRedirect("/registWithSns");

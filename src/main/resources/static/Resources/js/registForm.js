@@ -154,9 +154,6 @@ function checkMsg(){
 	if($("#memailconfirmTxt").text() == "인증번호가 잘못되었습니다"){
 		alert("올바른 인증번호를 입력하세요");
 		return false;
-	}else if($("#memailconfirmTxt").text() == ""){
-		alert('인증을 진행하세요');
-		return false;
 	}
 	return true;
 }

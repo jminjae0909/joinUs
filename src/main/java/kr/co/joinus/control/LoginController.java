@@ -80,7 +80,7 @@ public class LoginController {
 	@GetMapping("/viewIdPw")
 	public Map<String, String> viewIdPw(@RequestParam("users_email") String users_email) {
 		
-		UsersDTO dto = service.getMemberByEmail(users_email);
+		UsersDTO dto = service.getMemberFindByEmailsearch(users_email);
 		String id = (String)dto.getUsers_id();
 		String pw = (String)dto.getUsers_pwd();
 		

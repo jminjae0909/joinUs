@@ -26,6 +26,7 @@
 <div class="container" id="container">
 	<img src="../images/search.png" alt="" />
 	<h3>아이디/비밀번호 찾기</h3>
+	<div id="msg">* 일반 회원가입으로 가입한 정보만 조회 가능합니다.</div>
 	<div class="mb-3">
   		<label for="exampleFormControlInput1" class="form-label">이메일을 입력하세요</label>
   		<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">

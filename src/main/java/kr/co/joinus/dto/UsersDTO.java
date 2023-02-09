@@ -25,4 +25,5 @@ public class UsersDTO {
 	private String users_image;
 	private String users_role;
 	private String users_zipcode;
+	private String users_sns;
 }
