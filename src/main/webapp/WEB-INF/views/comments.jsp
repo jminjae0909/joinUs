@@ -91,7 +91,7 @@ li{
 								<c:if test="${ldto.users_id eq dto.users_id }">
 								<a href="comments_modi?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }">
 									<input type="button" value="수정ㅣ" id="comments_modi" class="btn btn-default btn-xs" /></a>																						 
-								<a href="comments_delete?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }">
+								<a href="comments_delete?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }&users_id=${ldto.users_id}">
 									<input type="button" value="삭제" id="comments_del" class="btn btn-default btn-xs" /></a>
 								</c:if>
 							<small> 
