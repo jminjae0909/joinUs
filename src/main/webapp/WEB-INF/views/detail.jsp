@@ -322,7 +322,7 @@ ul{
 						<li id="favorites_li">
 							<form action="favorites_add" method="post">
 								<c:if test="${ldto.users_id ne dto2.users_id}">
-								<input type="submit" value="❤️" class="btn btn-outline-danger" id="favorites_add_btn"/>
+								<input type="submit" value="❤️" class="btn btn-outline-danger" id="favorites_add_btn" onclick="overClick()"/>
 								<input type="hidden" name="meeting_number" value="${dto.meeting_number }" />
 								<input type="hidden" name="users_id" value="${ldto.users_id }" />							
 								</c:if>
