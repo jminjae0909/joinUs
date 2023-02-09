@@ -38,6 +38,7 @@
 							<a href="#" style="text-decoration: none;"><span>${ldto.users_nick}님, 환영합니다</span> <i class="bi bi-chevron-down"></i></a>
 							<ul>
 								<li><a href="/joinus/mypage">마이페이지</a></li>
+								<li><a href="/joinus/changeInfo">회원정보수정</a></li>
 								<li>
 									<a href="/logout">로그아웃</a>
 								</li>
