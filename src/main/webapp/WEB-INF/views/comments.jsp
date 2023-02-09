@@ -69,7 +69,7 @@ li{
 							id="textarea"></textarea> <input type="hidden"
 						name="meeting_number" value="${dto.meeting_number }" />
 						<div>
-							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
+							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />							
 							<c:if test="${ldto.users_id eq null }">
 							<a href="/login"><input type="button" id="comments_write_btn" class="btn btn-dark mt-3" value="로그인"></a>
 							</c:if>	

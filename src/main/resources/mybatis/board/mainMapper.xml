@@ -87,5 +87,13 @@
 		DELETE FROM meeting
 		WHERE meeting_number = #{meeting_number} 
 	</delete>
+	
+	<select id="getHitsAll" resultType="MeetingDTO">
+		SELECT *
+		FROM meeting
+		WHERE meeting_state = 0
+		ORDER BY meeting_hits desc
+		limit 7
+	</select>
 
 </mapper>

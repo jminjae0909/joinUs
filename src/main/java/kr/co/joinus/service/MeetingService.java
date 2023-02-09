@@ -63,5 +63,10 @@ public class MeetingService {
 		
 		return dao.getSkill(skill);
 	}
+	
+	public List<MeetingDTO> getHitsAll(){
+		
+		return dao.getHitsAll();
+	}
 
 }

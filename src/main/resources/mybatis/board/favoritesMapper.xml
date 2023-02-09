@@ -22,4 +22,9 @@
 		WHERE meeting_number = #{meeting_number} and users_id = #{users_id}
 	</delete>
 	
+	<delete id="deleteOne2" parameterType="int">
+		DELETE FROM favorites
+		WHERE meeting_number = #{meeting_number}
+	</delete>
+	
 </mapper>

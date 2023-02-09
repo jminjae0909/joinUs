@@ -2,14 +2,32 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../views/script.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+
 </head>
+<script>
+
+$(function(){
+	
+$(document).ready(function(){
+	  var currentPosition = parseInt($(".quickmenu").css("top"));
+	  $(window).scroll(function() {
+	    var position = $(window).scrollTop(); 
+	    $(".quickmenu").stop().animate({"top":position+currentPosition+"px"},1000);
+	  });
+	});
+});
+
+</script>
 <style>
 
 #detail_title{
@@ -202,13 +220,90 @@ ul{
 	border-radius: 50%;
 }
 
+.quickmenu {
+	position:absolute;
+	width:250px;
+	top:50%;
+	margin-top:-50px;
+	right:10px;
+	background:#fff;
+}
+
+.quickmenu ul {
+	position:relative;
+	float:left;
+	width:100%;
+	display:inline-block;
+	*display:inline;
+	border:1px solid #ddd;
+}
+
+.quickmenu ul li {
+	margin-left: -32;
+	float:left;
+	width:245px;
+	border-bottom:1px solid #ddd;
+	text-align:center;
+	display:inline-block;
+	*display:inline;
+}
+.quickmenu ul li a {
+	position:relative;
+	float:left;
+	width:100%;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	color: #333;
+	font-size:9.5pt;
+}
+.quickmenu ul li a:hover {
+	color:#000;
+}
+.quickmenu ul li:last-child {
+	border-bottom:0;
+}
+.quickmenu a{
+	text-decoration: none;
+}
+.quickmenu label{
+	margin-left: 60px;
+	color: #333;
+	font-size: 15px;
+    font-weight: 700;
+}
+
 
 </style>
 <body>
 
 	<jsp:include page="head.jsp" />
 	
-	
+	<div class="quickmenu">	
+		<label>‍조회수TOP 모임‍🔥</label>
+
+  		<ul>
+ 			 <c:forEach var="hitsdto" items="${list2}">
+				<c:choose>
+					<c:when test="${fn:length(hitsdto.meeting_title) > 20}">
+						<li>
+							<a href="/meeting/detail?meeting_number=${hitsdto.meeting_number }&users_id=${ldto.users_id}">
+								<c:out value="${fn:substring(hitsdto.meeting_title,0,19)}"/>....
+							</a>
+						</li>
+					</c:when>
+					<c:otherwise>
+						<li>
+							<a href="/meeting/detail?meeting_number=${hitsdto.meeting_number }&users_id=${ldto.users_id}">
+								<c:out value="${hitsdto.meeting_title}"/>
+							</a>
+						</li>	
+    				</c:otherwise> 	
+   			 	</c:choose>
+  			</c:forEach>
+  		</ul>
+	</div>
+		
 	<div class="container">		
 			<section>
 				<div id="detail_title">

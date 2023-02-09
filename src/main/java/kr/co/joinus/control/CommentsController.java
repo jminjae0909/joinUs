@@ -37,24 +37,26 @@ public class CommentsController {
 	@PostMapping("/meeting/comments_write")
 	public String WriteOk(@ModelAttribute("dto")CommentsDTO dto,
 						@RequestParam("meeting_number")int meeting_number,
+						@RequestParam("users_id")String users_id,
 						  Model model) {			
 		
 		//미팅 등록
 		commentsservice.add(dto);
 				
-		return "redirect:/meeting/detail?meeting_number="+dto.getMeeting_number();		
+		return "redirect:/meeting/detail?meeting_number="+dto.getMeeting_number()+"&users_id="+users_id;		
 	}
 	
 	@GetMapping("/meeting/comments_delete")
 	public String delete(@RequestParam("comments_number")int comments_number,
-						@RequestParam("meeting_number")int meeting_number, Model model) {
+						@RequestParam("meeting_number")int meeting_number, Model model,
+						@RequestParam("users_id")String users_id) {
 
 		CommentsDTO dto = commentsservice.selectOne(comments_number);
 		
 		model.addAttribute("dto", dto);
 		
 		commentsservice.deleteOne(comments_number);
-		return "redirect:/meeting/detail?meeting_number="+dto.getMeeting_number();
+		return "redirect:/meeting/detail?meeting_number="+dto.getMeeting_number()+"&users_id="+users_id;
 	}
 	
 	@GetMapping("/meeting/comments_modi")
@@ -75,13 +77,14 @@ public class CommentsController {
 	
 	@PostMapping("/meeting/comments_modi")
 	public String modifyOk(@RequestParam("comments_number")int comments_number,
-							@ModelAttribute("dto")CommentsDTO dto) {
+							@ModelAttribute("dto")CommentsDTO dto,
+							@RequestParam("users_id")String users_id) {
 		
 		commentsservice.updateOne(dto);
 		
 		System.out.println(dto);
 
-		return "redirect:/meeting/detail?meeting_number="+dto.getMeeting_number();
+		return "redirect:/meeting/detail?meeting_number="+dto.getMeeting_number()+"&users_id="+users_id;
 	}
 	
 }
