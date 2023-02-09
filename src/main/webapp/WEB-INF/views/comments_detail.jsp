@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../views/script.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </head>
+
 <style>
 
 #detail_title{
@@ -182,14 +184,32 @@ a{
 	text-decoration: none;
 }
 
+ul{
+   list-style:none;
+}
+#favorites_li{
+	display: flex;
+    position: relative;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+    margin-left: 700px;
+}
+
+#favorites_add_btn{
+	border-radius: 50%;
+}
+
+#favorites_delete_btn{
+	border-radius: 50%;
+}
 
 
 </style>
 <body>
 
 	<jsp:include page="head.jsp" />
-	
-	
+		
 	<div class="container">		
 			<section>
 				<div id="detail_title">
@@ -202,7 +222,30 @@ a{
 					<div id="contents_date">
 						${dto.meeting_insertdate}
 					</div>
+					
+				<div id="contents_favorites">
+					<ul id="favorites_ul">
+						<li id="favorites_li">
+							<form action="favorites_add" method="post">
+								<c:if test="${ldto.users_id ne dto2.users_id}">
+								<input type="submit" value="❤️" class="btn btn-outline-danger" id="favorites_add_btn" onclick="overClick()"/>
+								<input type="hidden" name="meeting_number" value="${dto.meeting_number }" />
+								<input type="hidden" name="users_id" value="${ldto.users_id }" />							
+								</c:if>
+							</form>
+							
+							<form action="favorites_delete" method="Get">
+								<c:if test="${ldto.users_id eq dto2.users_id and ldto.users_id ne null}">
+								<input type="submit" value="🤍" class="btn btn-danger" id="favorites_delete_btn" />
+								<input type="hidden" name="meeting_number" value="${dto.meeting_number }" />
+								<input type="hidden" name="users_id" value="${ldto.users_id }" />
+								</c:if>
+							</form>						
+						</li>
+					</ul>															 						 	
+					</div>
 				</div>
+					
 				<div id="detail_info">
 					<ul id="detail_info_Grid">
 						<li id="detail_meeting_1">						

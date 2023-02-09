@@ -336,11 +336,10 @@ ul{
 								</c:if>
 							</form>						
 						</li>
-					</ul>
-															 	
-					 	
+					</ul>															 						 	
 					</div>
 				</div>
+				
 				<div id="detail_info">
 					<ul id="detail_info_Grid">
 						<li id="detail_meeting_1">						

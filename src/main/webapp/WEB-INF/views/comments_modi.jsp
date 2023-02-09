@@ -95,7 +95,7 @@ li{
 								<a href="comments_modi?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }">
 									<input type="button" value="수정ㅣ" id="comments_modi" class="btn btn-default btn-xs" /></a>
 									<input type="hidden" name="comments_number" value="${dto2.comments_number }" />															 
-								<a href="comments_delete?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }">
+								<a href="comments_delete?comments_number=${dto.comments_number}&meeting_number=${dto.meeting_number }&users_id=${ldto.users_id}">
 									<input type="button" value="삭제" id="comments_del" class="btn btn-default btn-xs" /></a>
 								</c:if>
 							<small> 
