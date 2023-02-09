@@ -19,6 +19,11 @@
 			<nav id="navbar" class="navbar order-last order-lg-0">
 				<ul>
 					<li>
+						<c:if test="${ldto.users_role == 'ADMIN' }">
+							<a class="nav-link scrollto" href="/admin">관리자 페이지</a>
+						</c:if>
+					</li>
+					<li>
 						<a class="nav-link scrollto" href="/storehome">스토어</a>
 					</li>
 

@@ -45,6 +45,7 @@ public class LoginController {
 			out.flush();
 			return "regist/registForm";
 		}else {
+			log.info("dto: {}", dto);
 			session.setAttribute("ldto", dto);
 			
 			if(service2.getOneAttend(id) == null) {

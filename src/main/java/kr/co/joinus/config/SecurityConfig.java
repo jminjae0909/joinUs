@@ -60,13 +60,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeHttpRequests()
 		
-			.antMatchers("/admin").hasRole("ADMIN")
+			.antMatchers("/admin").permitAll()
 
 			.antMatchers("/joinus/**").permitAll()
 			.antMatchers("/meeting/**").permitAll()
 
 			.antMatchers("/regist").permitAll()
-			.and()
+		    .and()
 			
 			.oauth2Login().loginPage("/login") // sns로그인 가능하게 하되 커스텀 로그인 페이지로 가도록 하기
 			.userInfoEndpoint() // 소셜 로그인 인증 후 얻어지는 사용자 정보를
