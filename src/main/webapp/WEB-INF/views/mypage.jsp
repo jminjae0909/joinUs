@@ -197,7 +197,6 @@ h6 {
 			<li class="tab-link" data-tab="tab-2">관심목록조회</li>
 			<li class="tab-link" data-tab="tab-3">나의후기조회</li>
 			<li class="tab-link" data-tab="tab-4">나의커피콩</li>
-			<li class="tab-link" data-tab="tab-5">회원정보수정</li>
 		</ul>
 
 		<div id="tab-1" class="tab-content current ">
@@ -215,11 +214,7 @@ h6 {
 		<div id="tab-4" class="tab-content">
 			<div class="margind4" ></div>
 		</div>
-		
-		<div id="tab-5" class="tab-content">
 
-			
-		</div>
 	</div>
 </body>
 </html>
