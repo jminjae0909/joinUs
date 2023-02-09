@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.joinus.dao.AttendanceDAO">
+	
+	<select id="getOneAttend" parameterType="String" resultType="AttendanceDTO">
+		SELECT attendance_number, users_id, date_format(attendance_date, '%Y-%m-%d') attendance_date
+		FROM attendance
+		WHERE users_id = #{users_id} AND  date_format(attendance_date, '%Y-%m-%d')  =  date_format(sysdate(), '%Y-%m-%d')
+	</select>
+	
+	<insert id="addAttend" parameterType="String">
+	
+		INSERT INTO attendance
+		VALUES (null, #{users_id}, sysdate())
+	
+	</insert>
+	
+	<update id="waterUpdate" parameterType="String">
+		UPDATE users
+		SET users_water = users_water + 1
+		WHERE users_id = #{users_id}
+	
+	</update>
+
+</mapper>
