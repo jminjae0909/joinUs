@@ -235,7 +235,8 @@ ul{
 	width:100%;
 	display:inline-block;
 	*display:inline;
-	border:1px solid #ddd;
+	border:2px solid #e2e2e2;
+	border-radius: 1rem;
 }
 
 .quickmenu ul li {
@@ -246,6 +247,7 @@ ul{
 	text-align:center;
 	display:inline-block;
 	*display:inline;
+	font-weight: 600;
 }
 .quickmenu ul li a {
 	position:relative;
@@ -253,9 +255,10 @@ ul{
 	width:100%;
 	height:30px;
 	line-height:30px;
-	text-align:center;
+	text-align:left;
 	color: #333;
 	font-size:9.5pt;
+	margin-left: 10px;
 }
 .quickmenu ul li a:hover {
 	color:#000;
@@ -273,6 +276,9 @@ ul{
     font-weight: 700;
 }
 
+.quickmenu_label{
+	margin-bottom: 20px;
+}
 
 </style>
 <body>
@@ -280,8 +286,7 @@ ul{
 	<jsp:include page="head.jsp" />
 	
 	<div class="quickmenu">	
-		<label>‍조회수TOP 모임‍🔥</label>
-
+		<label class="quickmenu_label">‍조회수TOP 모임‍🔥</label>
   		<ul>
  			 <c:forEach var="hitsdto" items="${list2}">
 				<c:choose>
