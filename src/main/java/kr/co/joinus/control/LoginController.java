@@ -53,7 +53,7 @@ public class LoginController {
 				service2.waterUpdate(id);	
 			}
 			
-			return "main";
+			return "redirect:/joinus/main";
 		}
 	}
 	
