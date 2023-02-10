@@ -107,11 +107,10 @@ h6 {
 			
 			if(tab_id == 'tab-3') {
 				console.log('3번입니다.');
-			}
-			
-			if(tab_id == 'tab-4') {
-				console.log('4번입니다.');
-				mypageBeen(1);
+				var water = ${ldto.users_water}
+				var bean = ${ldto.users_bean}
+				console.log(water +" / " + bean);
+				mypageBeanStart(water, bean);
 			}
 
 		});
@@ -144,16 +143,16 @@ h6 {
 		});
 	}
 	
-	function mypageBeen(bcp) {
+	function mypageBeanStart(water, bean) {
 		
 		$.ajax({
-			url : "/joinus/mypageBeen",
+			url : "/joinus/mypageBean",
 			type : "GET",
-			data : { "cp" : bcp, "users_id" : "${ldto.users_id}" } 
+			data : { "water" : water, "bean" : bean, "users_id" : "${ldto.users_id}" } 
 
 		}).done(function(data) {
-			$(".margind4").empty();
-			$(".margind4").replaceWith(data);
+			$(".margind3").empty();
+			$(".margind3").replaceWith(data);
 		});
 	}
 	
@@ -184,6 +183,9 @@ h6 {
 			
 		});
 	}
+
+
+
 </script>
 </head>
 <body>
@@ -195,8 +197,7 @@ h6 {
 			
 			<li class="tab-link current" data-tab="tab-1">나의모임글조회</li>
 			<li class="tab-link" data-tab="tab-2">관심목록조회</li>
-			<li class="tab-link" data-tab="tab-3">나의후기조회</li>
-			<li class="tab-link" data-tab="tab-4">나의커피콩</li>
+			<li class="tab-link" data-tab="tab-3">나의커피콩</li>
 		</ul>
 
 		<div id="tab-1" class="tab-content current ">
@@ -208,13 +209,9 @@ h6 {
 		</div>
 		
 		<div id="tab-3" class="tab-content">
-			<div class="margind3" ></div>
+			<div class="margind3"></div>
 		</div>
 		
-		<div id="tab-4" class="tab-content">
-			<div class="margind4" ></div>
-		</div>
-
 	</div>
 </body>
 </html>
