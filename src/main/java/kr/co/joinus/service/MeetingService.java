@@ -29,6 +29,10 @@ public class MeetingService {
 		return dao.getAllCheck(category);
 	}
 	
+	public List<MeetingDTO> getCategoryCheck(int category){
+		return dao.getCategoryCheck(category);
+	}
+	
 	public List<MeetingDTO> getAllCompleteCheck(int category) {
 		return dao.getAllCompleteCheck(category);
 	}

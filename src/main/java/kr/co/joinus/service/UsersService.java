@@ -1,5 +1,7 @@
 package kr.co.joinus.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,14 @@ public class UsersService {
 	
 	@Autowired
 	UsersDAO dao;
+	
+	public List<UsersDTO> selectAll(){
+		return dao.selectAll();
+	}
+	
+	public void deleteOne(String id) {
+		dao.deleteOne(id);
+	}
 	
 	public UsersDTO getMemberByEmail(String email) {
 		return dao.getMemberFindByEmail(email);
