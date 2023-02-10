@@ -10,6 +10,7 @@ import kr.co.joinus.dto.FavoritesDTO;
 import kr.co.joinus.dto.MeetingDTO;
 import kr.co.joinus.dto.ReviewsDTO;
 import kr.co.joinus.dto.StartEnd;
+import kr.co.joinus.dto.UsersDTO;
 
 @Service
 public class MypageService {
@@ -47,6 +48,10 @@ public class MypageService {
 	
 	public void addReivews(ReviewsDTO dto) {
 		dao.addReivews(dto);
+	}
+	
+	public void waterBean(UsersDTO dto) {
+		dao.waterBean(dto);
 	}
 	
 }
