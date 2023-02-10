@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../views/script.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -116,17 +117,6 @@ label {
 	font-size: 25px;
 	font-weight: bold;
 }
-.skill_category_ul{
-	display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    grid-gap: 15px;
-    gap: 15px;
-    margin-top: 50px;
-}
-.skill_category_li{
-	margin-left: 30px;
-}
 
 ul {
     list-style: none;
@@ -179,6 +169,39 @@ ul {
     white-space: nowrap;
 
 }
+
+.skill_category_ul2{
+	display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    grid-gap: 15px;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.skill_language_icon{
+	opacity: 1;
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+	display: flex;
+    grid-gap: 10px;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid #d0d0d0;
+    border-radius: 100px;
+    padding: 12px 20px 12px 15px;
+    transition: all .1s ease-in;
+    cursor: pointer;
+}
+
+.skill_language{
+	border:none;
+	background-color:transparent;
+	font-weight: 600;
+	color: #444444;
+	font-size: 20px;
+}
+
 
 
 </style>
@@ -254,17 +277,48 @@ ul {
 					<ul class="skill_filter">
 						<li class="skill_filter_all"><a href="/joinus/main">전체 보기</a></li>				
 					</ul>
-					<ul class="skill_category_ul">
-						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="java"/></li>
-						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="Spring" /></li>
- 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="Nodejs" /></li>					
- 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="Kotlin" /></li>						
- 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="TypeScript" /></li>						
- 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="React" /></li>						
- 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="Vue" /></li>						
- 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="MySQL" /></li>						
- 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="Python" /></li>						
- 						<li class="skill_category_li"><input type="submit" name="skill" class="w-btn-outline w-btn-gray-outline" value="php" /></li>										
+										
+					<ul class="skill_category_ul2">
+						<li class="skill_language_icon">
+							<img src="https://holaworld.io/images/languages/java.svg" alt="" style="width: 35px; height: 35px;"/>
+							<input type="submit" class="skill_language" name="skill" value="java"/>
+						</li>
+						<li class="skill_language_icon">
+							<img src="https://holaworld.io/images/languages/spring.svg" alt="" style="width: 35px; height: 35px;"/>
+							<input type="submit" class="skill_language" name="skill" value="Spring"/>
+						</li>
+						<li class="skill_language_icon">
+							<img src="https://holaworld.io/images/languages/nodejs.svg" alt="" style="width: 35px; height: 35px;"/>
+							<input type="submit" class="skill_language" name="skill" value="Nodejs"/>
+						</li>
+						<li class="skill_language_icon">
+							<img src="https://holaworld.io/images/languages/kotlin.svg" alt="" style="width: 35px; height: 35px;"/>
+							<input type="submit" class="skill_language" name="skill" value="Kotlin"/>
+						</li>
+						<li class="skill_language_icon">
+							<img src="https://holaworld.io/images/languages/typescript.svg" alt="" style="width: 35px; height: 35px;"/>
+							<input type="submit" class="skill_language" name="skill" value="TypeScript"/>
+						</li>
+						<li class="skill_language_icon">
+							<img src="https://holaworld.io/images/languages/react.svg" alt="" style="width: 35px; height: 35px;"/>
+							<input type="submit" class="skill_language" name="skill" value="React"/>
+						</li>
+						<li class="skill_language_icon">
+							<img src="https://holaworld.io/images/languages/vue.svg" alt="" style="width: 35px; height: 35px;"/>
+							<input type="submit" class="skill_language" name="skill" value="Vue"/>
+						</li>
+						<li class="skill_language_icon">
+							<img src="https://holaworld.io/images/languages/mysql.svg" alt="" style="width: 35px; height: 35px;"/>
+							<input type="submit" class="skill_language" name="skill" value="MySQL"/>
+						</li>
+						<li class="skill_language_icon">
+							<img src="https://holaworld.io/images/languages/python.svg" alt="" style="width: 35px; height: 35px;"/>
+							<input type="submit" class="skill_language" name="skill" value="Python"/>
+						</li>
+						<li class="skill_language_icon">
+							<img src="https://holaworld.io/images/languages/php.svg" alt="" style="width: 35px; height: 35px;"/>
+							<input type="submit" class="skill_language" name="skill" value="php"/>
+						</li>
 					</ul>
 				</form>							
 			</div>	
@@ -315,7 +369,39 @@ ul {
 										<p class="startedate">시작 예정일 | ${dto.meeting_startdate }</p>
 									</div>
 									<h4 class="studyItem_title">${dto.meeting_title }</h4>
-									<p class="studyItem_place">${dto.meeting_skill }</p>
+									
+									<div style="margin-bottom: 50px; margin-top: 50px;">
+									<c:if test = "${fn:contains(dto.meeting_skill, 'java')}">
+									<span><img src="https://holaworld.io/images/languages/java.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>							
+									<c:if test = "${fn:contains(dto.meeting_skill, 'Spring')}">
+									<span><img src="https://holaworld.io/images/languages/spring.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'Nodejs')}">
+									<span><img src="https://holaworld.io/images/languages/nodejs.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'Kotlin')}">
+									<span><img src="https://holaworld.io/images/languages/kotlin.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'TypeScript')}">
+									<span><img src="https://holaworld.io/images/languages/typescript.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'React')}">
+									<span><img src="https://holaworld.io/images/languages/react.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'Vue')}">
+									<span><img src="https://holaworld.io/images/languages/vue.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'MySQL')}">
+									<span><img src="https://holaworld.io/images/languages/mysql.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'Python')}">
+									<span><img src="https://holaworld.io/images/languages/python.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'php')}">
+									<span><img src="https://holaworld.io/images/languages/php.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									</div>
 									
 									<div class="studyItem_info">
 										<p class="">

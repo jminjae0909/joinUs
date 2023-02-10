@@ -16,12 +16,16 @@ public class UsersService {
 		return dao.getMemberFindByEmail(email);
 	}
 	
-	public UsersDTO getMemberFindById(String id) {
-		return dao.getMemberFindById(id);
+	public UsersDTO getMemberFindByEmailsearch(String email) {
+		return dao.getMemberFindByEmailsearch(email);
 	}
 	
-	public void addUsers(UsersDTO dto) {
-		dao.insertOne(dto);
+	public UsersDTO getMemberByEmailAndSns(String email, String clientName) {
+		return dao.getMemberFindByEmailAndSns(email, clientName);
+	}
+	
+	public UsersDTO getMemberFindById(String id) {
+		return dao.getMemberFindById(id);
 	}
 	
 	public int isExistId(String id) {
@@ -30,10 +34,6 @@ public class UsersService {
 	
 	public int isExistEmail(String email) {
 		return dao.isExistEmail(email);
-	}
-	
-	public void insertEmailOnly(UsersDTO dto) {
-		dao.insertEmailOnly(dto);
 	}
 	
 	public void insertOne(UsersDTO dto) {

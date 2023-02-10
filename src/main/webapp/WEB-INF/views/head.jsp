@@ -19,6 +19,11 @@
 			<nav id="navbar" class="navbar order-last order-lg-0">
 				<ul>
 					<li>
+						<c:if test="${ldto.users_role == 'ADMIN' }">
+							<a class="nav-link scrollto" href="/admin">관리자 페이지</a>
+						</c:if>
+					</li>
+					<li>
 						<a class="nav-link scrollto" href="/storehome">스토어</a>
 					</li>
 
@@ -38,6 +43,7 @@
 							<a href="#" style="text-decoration: none;"><span>${ldto.users_nick}님, 환영합니다</span> <i class="bi bi-chevron-down"></i></a>
 							<ul>
 								<li><a href="/joinus/mypage">마이페이지</a></li>
+								<li><a href="/joinus/changeInfo">회원정보수정</a></li>
 								<li>
 									<a href="/logout">로그아웃</a>
 								</li>

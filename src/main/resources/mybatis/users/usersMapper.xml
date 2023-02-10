@@ -9,6 +9,16 @@
 		WHERE users_email = #{users_email}
 	</select>
 	
+	<select id="getMemberFindByEmailsearch" parameterType="String" resultType="UsersDTO">
+		SELECT * FROM users
+		WHERE users_email = #{users_email} AND users_sns = "x"
+	</select>
+	
+	<select id="getMemberFindByEmailAndSns" parameterType="UsersDTO" resultType="UsersDTO">
+		SELECT * FROM users
+		WHERE users_email = #{email} AND users_sns = #{clientName}
+	</select>
+	
 	<select id="getMemberFindById" parameterType="String" resultType="UsersDTO">
 		SELECT * FROM users
 		WHERE users_id = #{users_id}
@@ -16,7 +26,7 @@
 	
 	<insert id="insertOne" parameterType="UsersDTO">
 		INSERT INTO users
-		VALUES (#{users_id}, #{users_pwd}, #{users_name}, #{users_phone}, #{users_email}, #{users_nick}, now(), #{users_addrs}, 0, 0, 0, null, 'USER', #{users_zipcode})
+		VALUES (#{users_id}, #{users_pwd}, #{users_name}, #{users_phone}, #{users_email}, #{users_nick}, now(), #{users_addrs}, 0, 0, 0, null, 'USER', #{users_zipcode}, #{users_sns})
 	</insert>
 	
 	<select id="isExistId" parameterType="String" resultType="int">
@@ -26,12 +36,7 @@
 	
 	<select id="isExistEmail" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM users
-		WHERE users_email = #{users_email}
+		WHERE users_email = #{users_email} AND users_sns = "x"
 	</select>
-	
-	<insert id="insertEmailOnly" parameterType="UsersDTO">
-		INSERT INTO users (users_email)
-		VALUES (#{users_email})
-	</insert>
 
 </mapper>

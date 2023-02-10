@@ -2,6 +2,7 @@ package kr.co.joinus.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -36,12 +37,12 @@ public class CustomOAuth2UserDetailService extends DefaultOAuth2UserService {
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-		log.info(">>>>>>>>>>>>>>>>>>>>>>>>>> userRequest: " + userRequest);
+		log.info("userRequest: {}", userRequest);
 
 		// 소셜로그인을 어떤 소셜로 했는지 구분하기. 소셜 이름 가져오는 메서드
 		String clientName = userRequest.getClientRegistration().getClientName();
 
-		log.info("client name: " + clientName);
+		log.info("client name: {} ", clientName);
 
 		// 로그인한 계정의 정보를 가져와서 log로 출력하기
 		OAuth2User oAuth2User = super.loadUser(userRequest);
@@ -84,20 +85,24 @@ public class CustomOAuth2UserDetailService extends DefaultOAuth2UserService {
 
 			email = (String) map3.get("email");
 
-			log.info("email: " + email);
+			log.info("email: {}", email);
 		}
 
 		// 해당 email이 db에 있는지 확인 후
-		UsersDTO dto = service.getMemberByEmail(email);
+		UsersDTO dto = service.getMemberByEmailAndSns(email, clientName);
+		
+		log.info("이메일 존재함?: {}", dto);
 
-		// 없으면 세션에 넣어 email을 registForm으로 전송하기
+		// 없으면 세션에 넣어 email과 sns종류를 registForm으로 전송하기
 		if (dto == null) {
-			req.getSession().setAttribute("email", email);
+			Map<String, String> registSns = new HashMap<>();
+			registSns.put("email", email);
+			registSns.put("clientName", clientName);
+			req.getSession().setAttribute("registSns", registSns);
 
 			try {
 				resp.sendRedirect("/registWithSns");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else {
@@ -105,7 +110,6 @@ public class CustomOAuth2UserDetailService extends DefaultOAuth2UserService {
 			try {
 				resp.sendRedirect("/joinus/main");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

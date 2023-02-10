@@ -17,4 +17,5 @@ public class FavoritesDTO {
 	private String users_id;
 	private int meeting_number;
 	private String favorites_date;
+	private String meeting_title;
 }

@@ -2,6 +2,8 @@ package kr.co.joinus.control;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.joinus.dto.MeetingDTO;
+import kr.co.joinus.dto.UsersDTO;
 import kr.co.joinus.service.MeetingService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -94,5 +97,11 @@ public class MainController {
 		model.addAttribute("list", list);
 		
 		return "main";
+	}
+	
+	@GetMapping("changeInfo")
+	public String changeInfo() {
+
+		return "/regist/chageInfo";
 	}
 }

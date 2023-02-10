@@ -10,12 +10,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.joinus.dto.UsersDTO;
 import kr.co.joinus.service.AttendanceService;
@@ -47,6 +45,7 @@ public class LoginController {
 			out.flush();
 			return "regist/registForm";
 		}else {
+			log.info("dto: {}", dto);
 			session.setAttribute("ldto", dto);
 			
 			if(service2.getOneAttend(id) == null) {
@@ -82,7 +81,7 @@ public class LoginController {
 	@GetMapping("/viewIdPw")
 	public Map<String, String> viewIdPw(@RequestParam("users_email") String users_email) {
 		
-		UsersDTO dto = service.getMemberByEmail(users_email);
+		UsersDTO dto = service.getMemberFindByEmailsearch(users_email);
 		String id = (String)dto.getUsers_id();
 		String pw = (String)dto.getUsers_pwd();
 		

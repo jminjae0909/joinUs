@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class RegisterMail implements MailServiceInter {
 
 	@Autowired
@@ -23,14 +26,14 @@ public class RegisterMail implements MailServiceInter {
 	// 메일 내용 작성
 	@Override
 	public MimeMessage creatMessage(String to) throws MessagingException, UnsupportedEncodingException {
-		System.out.println("메일받을 사용자" + to);
-		System.out.println("인증번호" + ePw);
+		log.info("메일 받을 사용자: {}", to);
 
 		MimeMessage message = emailSender.createMimeMessage();
 
 		message.addRecipients(RecipientType.TO, to); // 메일 받을 사용자
 		message.setSubject("[CODEE] 이메일 인증코드 입니다"); // 이메일 제목
 
+		//보낼 메세지 내용 생성
 		String msgg = "";
 		//msgg += "<img src=../images/codee.png />"; // header image
 		msgg += "<h1>안녕하세요</h1>";
@@ -50,10 +53,8 @@ public class RegisterMail implements MailServiceInter {
 		message.setText(msgg, "utf-8", "html"); // 메일 내용, charset타입, subtype
 		// 보내는 사람의 이메일 주소, 보내는 사람 이름
 		message.setFrom(new InternetAddress("test230206@naver.com", "codee_Admin"));
-		System.out.println("********creatMessage 함수에서 생성된 msgg 메시지********" + msgg);
 
-		System.out.println("********creatMessage 함수에서 생성된 리턴 메시지********" + message);
-
+		//creatMessage 함수에서 생성된 메세지 리턴
 		return message;
 	}
 
@@ -93,11 +94,9 @@ public class RegisterMail implements MailServiceInter {
 	public String sendSimpleMessage(String to) throws Exception {
 
 		ePw = createKey(); // 랜덤 인증코드 생성
-		System.out.println("********생성된 랜덤 인증코드******** => " + ePw);
+		log.info("생성된 인증번호: {}", ePw);
 
 		MimeMessage message = creatMessage(to); // "to" 로 메일 발송
-
-		System.out.println("********생성된 메시지******** => " + message);
 
 		// 예외처리
 		try {

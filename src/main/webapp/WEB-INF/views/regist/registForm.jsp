@@ -41,6 +41,7 @@
 		<!-- 소셜로그인으로 회원가입 진행하는 경우 -->
 		<c:if test="${emailId ne null && emailDomain ne null }">
 			<div class="input-group mb-3">
+				<input type="hidden" name="clientName" value="${clientName }" />
 	  			<input type="text" id="email1" name="email1" class="form-control" placeholder="이메일 아이디" aria-label="Username" value="${emailId }" readonly >
 	  			<span class="input-group-text">@</span>
 	  			<input type="text" id="email2" name="email2" class="form-control" placeholder="이메일 주소" aria-label="Server" value="${emailDomain}" readonly >
@@ -57,6 +58,7 @@
 		<!-- 일반 회원가입으로 진행하는 경우 -->
 		<c:if test="${emailId eq null && emailDomain eq null }">
 			<div class="input-group mb-3">
+				<input type="hidden" name="clientName" value="x" />
 				<input type="text" id="email1" name="email1" class="form-control" placeholder="이메일 아이디" aria-label="Username" >
 	  			<span class="input-group-text">@</span>
 	  			<input type="text" id="email2" name="email2" class="form-control" placeholder="이메일 주소" aria-label="Server" >
@@ -110,7 +112,6 @@
   			<input type="text" id="addrsDetail" name="addrsDetail" class="form-control" aria-label="Text input with dropdown button" placeholder="상세주소 입력">
 		</div>
 		<div id="button">
-			<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token}" />
 			<button type="submit" class="btn btn-warning">회원가입하기</button>
 			<a href="/joinus/main"><button type="button" class="btn btn-secondary">취소하기</button></a>
 		</div>
