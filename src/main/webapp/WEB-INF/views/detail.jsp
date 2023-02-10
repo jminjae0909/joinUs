@@ -375,8 +375,41 @@ ul{
 							<span id="meeting_period_content">${dto.meeting_period}</span>						
 						</li>
 						<li id="detail_meeting_1">
-							<span id="meeting_skill_title">사용 기술</span>
-							<span id="meeting_skill_content">${dto.meeting_skill}</span>						
+							<span id="meeting_skill_title" style="position: relative; top: -40px;">사용 기술</span>
+							<div id="meeting_contact_content" style="position: relative; top: -40px;">
+								<div style="margin-bottom: 50px; margin-top: 50px;">
+									<c:if test = "${fn:contains(dto.meeting_skill, 'java')}">
+									<span><img src="https://holaworld.io/images/languages/java.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>							
+									<c:if test = "${fn:contains(dto.meeting_skill, 'Spring')}">
+									<span><img src="https://holaworld.io/images/languages/spring.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'Nodejs')}">
+									<span><img src="https://holaworld.io/images/languages/nodejs.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'Kotlin')}">
+									<span><img src="https://holaworld.io/images/languages/kotlin.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'TypeScript')}">
+									<span><img src="https://holaworld.io/images/languages/typescript.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'React')}">
+									<span><img src="https://holaworld.io/images/languages/react.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'Vue')}">
+									<span><img src="https://holaworld.io/images/languages/vue.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'MySQL')}">
+									<span><img src="https://holaworld.io/images/languages/mysql.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'Python')}">
+									<span><img src="https://holaworld.io/images/languages/python.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+									<c:if test = "${fn:contains(dto.meeting_skill, 'php')}">
+									<span><img src="https://holaworld.io/images/languages/php.svg" alt="" style="width: 50px; height: 50px;"/></span>
+									</c:if>
+								</div>				
+							</div>
 						</li>				
 					</ul>
 				</div>
