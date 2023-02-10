@@ -58,7 +58,7 @@
 </style>
 <head>
 <meta charset="UTF-8">
-<title>CODEESTORE</title>
+<title>CODEE/STORE</title>
 </head>
 <body>
 	<jsp:include page="head.jsp" />

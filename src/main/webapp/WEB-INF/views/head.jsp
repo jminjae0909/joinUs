@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CODEE</title>
 </head>
 <body>
 	<header id="header" class="fixed-top header-inner-pages">

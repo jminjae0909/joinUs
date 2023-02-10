@@ -6,9 +6,10 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>CODEE</title>
 <style type="text/css">
 .icon-box {
 	width: 420px;
