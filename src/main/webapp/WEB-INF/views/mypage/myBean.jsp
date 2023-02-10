@@ -15,23 +15,23 @@
 .main {
 	width: 500px;
 	height: 500px;
-	border: 1px solid red;
+
 	text-align: center;
 }
 
-#text {
-	
+#tree {
+	width: 250px;
+	height: 350px;
+
 }
 
-.text {
-
-	width: 500px;
+#bean {
+	position: absolute;
+	top: -250px;
+	left: 550px;
+	width: 100px;
 	height: 100px;
-	font-size: 25px;
-	position: relative;
-	top: 100px;
 }
-
 .button {
 
 	width: 500px;
@@ -40,6 +40,7 @@
 	position: relative;
 	top: 100px;
 }
+
 
 #button {
 
@@ -54,7 +55,7 @@
 	function go() {
 		var water = ${ldto.users_water};
 		var bean = ${ldto.users_bean};
-		var num = Math.floor(Math.random()*10);
+		var num = Math.floor(Math.random()*2);
 		console.log("현재 물 : " + water);
 		console.log("현재 콩 : " + bean);
 		
@@ -67,11 +68,16 @@
 			if(num==1) {
 				$("#text").text("커피콩 당첨입니다.");
 				bean = bean + 1;
-				
-				mypageBean(water, bean);
 				$("#button").attr("disabled", true);
-				
-			}	
+				mypageBeanS(water, bean);
+				$("#bean").animate({
+					top: '150px'
+				})
+			}else {
+				mypageBeanF(water, bean);
+			}
+			
+			
 		}
 		if(water < 1) {
 			console.log("아직 물 없음");
@@ -83,8 +89,22 @@
 		
 	}
 	
-	function mypageBean(water, bean) {
-		
+	function mypageBeanF(water, bean) {
+		console.log("실패했을때");
+		$.ajax({
+			url : "/joinus/mypageBean",
+			type : "GET",
+			data : { "water" : water, "bean" : bean, "users_id" : "${ldto.users_id}" } 
+
+		}).done(function(data) {
+			$(".margind3").empty();
+			$(".margind3").replaceWith(data);
+
+		});
+	}
+	
+	function mypageBeanS(water, bean) {
+		console.log("성공했을때");
 		$.ajax({
 			url : "/joinus/mypageBean",
 			type : "GET",
@@ -94,11 +114,16 @@
 			
 		});
 	}
+	
 </script>
 </head>
 <body>
 	<div class="margind3">
 		<div class="main">
+			<div class="img">
+				<img src="/images/tree.png" alt="" id="tree"/>
+				<img src="/images/bean.png" alt="" id="bean"/>
+			</div>
 			<div class="textFd">
 				<span id="text">안녕하세요 버튼을 눌러주세요</span>
 			</div>
@@ -106,6 +131,7 @@
 				<button class="btn btn-primary" type="button" id="button" onclick="go();">Button</button>
 			</div>
 			<div class="footFd">
+			<br />
 				<table>
 					<tr>
 						<td>현재 도전가능 횟수 : ${ldto.users_water }</td>
