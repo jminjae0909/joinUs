@@ -13,6 +13,8 @@ public interface MeetingDAO {
 	List<MeetingDTO> getAll();
 	List<MeetingDTO> getAllComplete();
 	
+	List<MeetingDTO> getCategoryCheck(int category);
+	
 	List<MeetingDTO> getAllCheck(int category);
 	List<MeetingDTO> getAllCompleteCheck(int category);
 	

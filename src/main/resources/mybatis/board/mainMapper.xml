@@ -24,6 +24,12 @@
 		WHERE meeting_state = 0 AND meeting_category = #{category}
 		ORDER BY meeting_number desc
 	</select>
+	
+	<select id="getCategoryCheck" parameterType="int" resultType="MeetingDTO">
+		SELECT * FROM meeting
+		WHERE meeting_category = #{meeting_category}
+		ORDER BY meeting_number desc
+	</select>
 
 	<select id="getAllCompleteCheck" parameterType="int" resultType="MeetingDTO">
 		SELECT *
