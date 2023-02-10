@@ -19,10 +19,12 @@
 	</select>
 	
 	<select id="mypageFavorites" parameterType="StartEnd" resultType="FavoritesDTO">
-		SELECT favorites_number, users_id,  favorites_date,  meeting_number, meeting_title
-		FROM favorites NATURAL JOIN meeting
-		WHERE users_id = #{users_id}
-		ORDER BY favorites_number desc limit #{startNo}, 10;
+		SELECT  f.favorites_number, f.users_id,  f.favorites_date,  f.meeting_number, m.meeting_title
+		FROM favorites f INNER JOIN meeting m
+		ON f.meeting_number = m.meeting_number
+        WHERE f.users_id = #{users_id}
+        group by f.favorites_number
+        order by f.favorites_number desc;
 	</select>
 	
 	<select id="getFavoritesTotal" parameterType="String" resultType="int">
@@ -40,5 +42,11 @@
 		INSERT INTO meeting_reviews	
 		VALUES (null, #{users_id}, #{meeting_number}, #{reviews_contents}, #{reviews_evaluation}, sysdate(), #{reviews_title} )
 	</insert>
+	
+	<update id="waterBean" parameterType="UsersDTO">
+		UPDATE users
+		SET users_water = #{users_water}, users_bean = #{users_bean}
+		WHERE users_id = #{users_id}
+	</update>
 
 </mapper>

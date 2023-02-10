@@ -3,6 +3,7 @@ package kr.co.joinus.control;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.mysql.cj.Session;
 
 import kr.co.joinus.dto.FavoritesDTO;
 import kr.co.joinus.dto.MeetingDTO;
@@ -32,6 +35,9 @@ public class MyPageController {
 	
 	@Autowired
 	MypageService service;
+	
+	@Autowired
+	UsersService service2;
 	
 	
 	@GetMapping("mypage")
@@ -125,10 +131,20 @@ public class MyPageController {
 		return "redirect:/joinus/main";		
 	}
 	
-	@GetMapping("/mypageBeen")
-	public String been(@RequestParam(name = "cp", defaultValue = "1")int currentPage, 
-			@RequestParam("users_id")String users_id) {
-		System.out.println("users_id : " + users_id);
-		return "/mypage/myBeen";
+	@GetMapping("/mypageBean")
+	public String bean(@RequestParam("water")int water,
+			@RequestParam("bean")int bean,
+			@RequestParam("users_id")String users_id,
+			HttpSession session) {
+		
+		UsersDTO dto = service2.getMemberFindById(users_id);
+		dto.setUsers_water(water);
+		dto.setUsers_bean(bean);
+		
+		service.waterBean(dto);
+		
+		session.setAttribute("ldto", dto);
+		
+		return "/mypage/myBean";
 	}
 }
