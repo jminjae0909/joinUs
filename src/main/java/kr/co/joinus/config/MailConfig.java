@@ -10,6 +10,8 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 @Configuration
 public class MailConfig {
 	
+	//푸쉬 테스트
+	
 	@Bean
 	JavaMailSender naverMailService() {
 		JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
