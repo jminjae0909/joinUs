@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// 작성한 정보를 바탕으로 db의 유저 정보와 권한을 가져와 패스워드를 인코딩 해줌
 		auth.jdbcAuthentication().dataSource(datasource).usersByUsernameQuery(usernameQuery)
-				.authoritiesByUsernameQuery(authQuery).passwordEncoder(passwordEncoder());
+			.authoritiesByUsernameQuery(authQuery).passwordEncoder(passwordEncoder());
 	}
 
 	// authorization에 필요한 리소스 설정하기
