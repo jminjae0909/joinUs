@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PropertiesConfig {
 	
-	//application.properties에 써둔 민감정보 가져옴
+	//application-security.properties에 써둔 민감정보 가져옴
 	
 	//@ConfigurationProperties 어노테이션이 핵심입니다. 
 	//application.properties 파일에서 키 값이 "my"인 설정값을 추가했기 때문에 @ConfigurationProperties에도 키 값을 "my"로 설정해주고, 
